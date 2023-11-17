@@ -83,5 +83,45 @@ document.addEventListener('DOMContentLoaded', ()=>
         time = 25 * 60;
         current = id;
         const taskIndex = task.findIndex(task => task.id === id);
+        const taskName = document.querySelector('#time #taskName');
+        taskName.textContent = tasks[taskIndex].title;
+
+        timer = setInterval(() =>
+        {
+            timeHandler(id);
+        }, 1000);    
+    };
+
+    function timeHandler(id)
+    {
+        time--;
+        renderTime();
+
+        if(time === 0)
+        {
+            clearInterval(timer);
+            markCcompleted(id);
+            renderTasks();
+        }
     }
+
+    function renderTime()
+    {
+        const timeDiv = document.querySelector('#time #value');
+        const minutes = parseInt(time / 60);
+        const seconds = parseInt(time % 60);
+
+        timeDiv.textContent = `${minutes < 10 ? '0' : ''} ${minutes}: ${seconds < 10 ? '0' : ''} ${seconds}`;
+    }
+
+    function markCcompleted(id)
+    {
+        //Sacamos el id de la tarea completada
+        const taskIndex = tasks.findIndex((task) => task.id === id);
+        
+        //Cambiamos la propiedad completed a true cuando se completa una tarea segun su indice
+        tasks[taskIndex].completed = true;
+    }
+    
+    
 });
