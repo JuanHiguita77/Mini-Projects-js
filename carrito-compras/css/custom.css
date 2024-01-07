@@ -177,8 +177,28 @@ ul {
   background-image: url(../img/icono3.png);
 }
 
-#lista-productos .row {
+#lista-productos .row,
+#lista-productos-search .row {
   margin-bottom: 20px;
+}
+
+#row-search-products
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+#row-search-products .columns
+{
+  width: 24.666667%;
+  margin: 10px 0;
+}
+
+#noResults
+{
+  text-align: center;
 }
 
 .agregar-carrito {

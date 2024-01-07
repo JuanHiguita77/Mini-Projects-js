@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', ()=>
 const carrito = document.querySelector('#carrito');
 const contenedorCarrito = document.querySelector('#lista-carrito tbody');
 const vaciarCarritoBtn = document.querySelector('#vaciar-carrito');
-const listaCursos = document.querySelector('#lista-productos');
+const listaProductos = document.querySelector('#lista-productos');
 const darkMode = document.querySelector('#toggle-dark-mode');
+const searchInput = document.querySelector('#search');
+const tarjeta = document.querySelectorAll('.card');
+const containerSearchProducts = document.querySelector('#lista-productos-search');
+containerSearchProducts.style.display = 'none';
 
 //Arreglo de la compra
 let articulosCarrito = [];
@@ -20,8 +24,11 @@ function cargarEventos()
     //darkmode
     darkToggle();
 
+	//busqueda
+	searchInput.addEventListener('input', findProduct);
+
 	//Agregar un curso cuando se da clic 
-	listaCursos.addEventListener('click', agregarCurso);
+	listaProductos.addEventListener('click', agregarCurso);
 
 	//Elimina los cursos con el boton X
 	carrito.addEventListener('click', eliminarCurso);
@@ -44,6 +51,79 @@ function cargarEventos()
 
 
 //Funciones
+
+//Iniciado desde evento 'input' pasado al input de texto
+function findProduct()
+{	
+	const productInputName = searchInput.value.toLowerCase().trim();
+	const cards = Array.from(tarjeta);
+
+	const findedProducts = cards.filter(producto =>
+	{
+		return producto.querySelector('h4').textContent.toLowerCase().trim().includes(productInputName);
+	});
+
+	listProducts(findedProducts)
+}
+
+//llega la tarjeta html
+function listProducts(products)
+{	
+	const tempDiv = document.createElement('div');
+	const row = document.querySelector('#row-search-products');
+
+	//limpiar html y lista anterior
+	while(row.firstChild) 
+	{
+		row.removeChild(row.firstChild);
+		listaProductos.style.display = 'none';
+	}
+
+	//verificar si esta mostrando algun producto o sino poner mensaje
+	if(products.length === 0)
+	{
+		tempDiv.innerHTML = `<h1 id="noResults" class="encabezado">NO HAY COINCIDENCIAS</h1>`;
+		row.appendChild(tempDiv);
+	}
+
+	//Validar las coincidencias y incrustar el html con las busquedas
+	if(products)
+	{	
+
+		if(searchInput.value === '')
+		{
+			containerSearchProducts.style.display = 'none';
+			listaProductos.style.display = 'block';
+		}
+		else
+		{
+			containerSearchProducts.style.display = 'block';
+
+			products.forEach( product =>
+			{
+				tempDiv.innerHTML +=  `
+							<div class="four columns">
+								<div class="card">
+									<img
+										src="${product.querySelector('img').src}"
+										class="imagen-curso u-full-width" />
+									<div class="info-card">
+										<h4>${product.querySelector('h4').textContent}</h4>
+										<p>${product.querySelector('p').textContent}</p>
+										<img src="${product.querySelector('.info-card img').src}" />
+										<p class="precio">${product.querySelector('.info-card p').textContent} <span class="u-pull-right">${product.querySelector('.info-card span').textContent}</span></p>
+										<a href="#" class="u-full-width button input agregar-carrito" data-id="1">Agregar Al Carrito</a>
+									</div>
+								</div>
+							</div>
+						`;
+
+				row.appendChild(tempDiv);
+			});
+		}
+	}
+}
+
 function darkToggle()
 {
     darkMode.addEventListener('click', ()=>
@@ -140,6 +220,7 @@ function leerDatos(curso)
 				return curso;//Retorna objetos por default 
 			};
 		});
+
 		articulosCarrito = [...cursos];
 	}
 	else 
