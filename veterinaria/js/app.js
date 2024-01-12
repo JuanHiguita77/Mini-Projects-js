@@ -31,6 +31,7 @@ function addCite()
     //Objeto cita
     const cite = 
     {
+        id: null,
         mascot: null,
         own: null,
         phone: null,
@@ -46,6 +47,7 @@ function addCite()
     cite.date = dateCiteInput.value;
     cite.hour = timeCiteInput.value;
     cite.description = descriptionInput.value;
+    cite.id = Date.now();
 
     if(alerta())
     {    
@@ -108,17 +110,20 @@ function alerta()
     return true;
 }
 
+
+
 function addCiteHtml()
 {
     //Contenedor de la tarjeta
     const cardContainer = document.querySelector('.container-cites');
 
+
     //Contenedor Template tarjeta
     const cardFull = document.createElement('div');
-
     //Recorremos cada objeto para mostrar las citas con los diferentes datos
     cites.forEach(cita =>
     {
+        
         //Template de la tarjeta
         cardFull.innerHTML = `
                                 <div class="card card_cite">
@@ -147,26 +152,39 @@ function addCiteHtml()
                                             <span>${cita.description}</span>
                                             </div>
                                         </p>
-
-                                        <div class="d-flex gap-2">
-                                            <button class="btn btn-primary editar">Editar</button>
-                                            <button class="btn btn-danger eliminar" onClick="deleteCite()">Eliminar</button>
-                                        </div>
                                     </div>
                                 </div>
         `;
+
+        const btnDeleteCite = document.createElement('button');
+        const btnEditCite = document.createElement('button');
+
+        btnDeleteCite.textContent = 'Eliminar';
+        btnEditCite.textContent = 'Editar';
+
+        btnEditCite.classList.add('btn', 'btn-primary', 'mx-3', 'editar');
+        btnDeleteCite.classList.add('btn', 'btn-danger', 'mx-3', 'eliminar');
+
+        cardFull.appendChild(btnEditCite);
+        cardFull.appendChild(btnDeleteCite);
     });
 
     //Agregamos cada tarjeta al html
     cardContainer.appendChild(cardFull);
+
+    const btnDelete = document.querySelector('.eliminar');
+    btnDelete.addEventListener('click', deleteCite)
 }
 
-//Funcion eliminar citas individuales
 function deleteCite(e)
 {
-    const citeFullContainer = e.target.parentElement.parentElement.parentElement;
+    const citeFullContainer = e.target.parentElement.parentElement;
+
+    //seleccionar el id del citeFullContainer
     
-    console.log('se borro el div', citeFullContainer);
+    //citas.filter(cita => cita.id !== id);
 }
 
+
+    
 //arreglar para que aparezca una sola vez la alerta
