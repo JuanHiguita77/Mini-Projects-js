@@ -30,6 +30,8 @@ btnSave.addEventListener('click', () =>
 
     //Añade la cita al html
     addCiteHtml();
+
+
 })
 
 //Llenar objeto agregando la cita
@@ -119,8 +121,8 @@ function addCiteHtml()
 {
     //Recorremos cada objeto para mostrar las citas con los diferentes datos
     cites.forEach(cita =>
-        {
-            let cardFull = document.createElement('div');
+    {
+        let cardFull = document.createElement('div');
         //Contenedor Template tarjeta
         //Template de la tarjeta
         cardFull.innerHTML = `
@@ -174,18 +176,31 @@ function addCiteHtml()
         //boton de borrar seleccionado
         btnDeleteCite.addEventListener('click', () =>
         {
+            //Borrar del html
             deleteHtml();
+
+            //Borrar del arreglo
             deleteCite(cita.id);
+
+            //Añadir el nuevo contenedor con citas actualizadas
             addCiteHtml();
         });
 
+        //Editar objeto y html
         btnEditCite.addEventListener('click', () =>
         {   
-            editCiteMode(cita.id)
+            //Editar el objeto
+            editCiteMode(cita.id);
+
+            //Borra del objeto el anterior
+            deleteCite(cita.id);
         });
 
         //Agregamos cada tarjeta al html
         cardContainer.appendChild(cardFull);
+        
+        //Cambia el texto del boton
+        btnSave.textContent = 'Guardar';
     });
 }
 
@@ -228,14 +243,8 @@ function editCiteMode(id)
             cite.hour = hour;
             cite.description = description;
             cite.id = id;
-
-            btnSave.textContent = 'Editar';
         });
 
-        console.log(cites);
+        btnSave.textContent = 'Editar';
     }
-
-    deleteHtml();
-
-    console.log('formulario editando')
 }
