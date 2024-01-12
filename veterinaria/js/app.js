@@ -6,6 +6,9 @@ const dateCiteInput = document.querySelector('#date_cite');
 const timeCiteInput = document.querySelector('#time_cite');
 const descriptionInput = document.querySelector('#description');
 
+//Contenedor de la tarjeta
+const cardContainer = document.querySelector('.container-cites');
+
 //Boton en cada tarjeta de cita
 //Boton editar
 const editCite = document.querySelector('.editar');
@@ -14,15 +17,19 @@ const editCite = document.querySelector('.editar');
 const btnSave = document.querySelector('#btnSave');
 
 //Guarda las citas
-const cites = [];
+let cites = [];
 
 //Boton guardar cita
 btnSave.addEventListener('click', () =>
 {
     //Añadir una cita
+    deleteHtml();
+    
+    //Agrega datos al objeto del arreglo
     addCite();
 
-    console.log(cites);
+    //Añade la cita al html
+    addCiteHtml();
 })
 
 //Llenar objeto agregando la cita
@@ -53,9 +60,6 @@ function addCite()
     {    
         //Añadir el objeto al arreglo
         cites.push(cite);
-
-        //Creamos la cita html
-        addCiteHtml();
     }
 }
 
@@ -111,22 +115,16 @@ function alerta()
 }
 
 
-
 function addCiteHtml()
 {
-    //Contenedor de la tarjeta
-    const cardContainer = document.querySelector('.container-cites');
-
-
-    //Contenedor Template tarjeta
-    const cardFull = document.createElement('div');
     //Recorremos cada objeto para mostrar las citas con los diferentes datos
     cites.forEach(cita =>
-    {
-        
+        {
+            let cardFull = document.createElement('div');
+        //Contenedor Template tarjeta
         //Template de la tarjeta
         cardFull.innerHTML = `
-                                <div class="card card_cite">
+                                <div class="card_cite">
                                     <div class="card-body">
                                         <h5 class="card-title fs-3 fw-bold">${cita.mascot}</h5>
                                         <p class="card-text">
@@ -156,35 +154,88 @@ function addCiteHtml()
                                 </div>
         `;
 
+        //creacion de botones
         const btnDeleteCite = document.createElement('button');
         const btnEditCite = document.createElement('button');
 
         btnDeleteCite.textContent = 'Eliminar';
         btnEditCite.textContent = 'Editar';
 
+        //Le agrego las clases a los botones
         btnEditCite.classList.add('btn', 'btn-primary', 'mx-3', 'editar');
         btnDeleteCite.classList.add('btn', 'btn-danger', 'mx-3', 'eliminar');
 
+        btnDeleteCite.setAttribute('id', cita.id);
+
+        //Añado cada boton a cada tarjeta
         cardFull.appendChild(btnEditCite);
         cardFull.appendChild(btnDeleteCite);
+        
+        //boton de borrar seleccionado
+        btnDeleteCite.addEventListener('click', () =>
+        {
+            deleteHtml();
+            deleteCite(cita.id);
+            addCiteHtml();
+        });
+
+        btnEditCite.addEventListener('click', () =>
+        {   
+            editCiteMode(cita.id)
+        });
+
+        //Agregamos cada tarjeta al html
+        cardContainer.appendChild(cardFull);
     });
-
-    //Agregamos cada tarjeta al html
-    cardContainer.appendChild(cardFull);
-
-    const btnDelete = document.querySelector('.eliminar');
-    btnDelete.addEventListener('click', deleteCite)
 }
 
-function deleteCite(e)
+function deleteCite(id)
 {
-    const citeFullContainer = e.target.parentElement.parentElement;
+    //Eliminamos del arreglo
+    cites = cites.filter(cita => cita.id !== id);
+}
 
-    //seleccionar el id del citeFullContainer
-    
-    //citas.filter(cita => cita.id !== id);
+function deleteHtml()
+{
+    while (cardContainer.firstChild) 
+    {
+        cardContainer.removeChild(cardContainer.firstChild);
+    }
 }
 
 
-    
-//arreglar para que aparezca una sola vez la alerta
+function editCiteMode(id)
+{
+    const citeFinded = cites.find(cita => cita.id === id);
+
+    if(citeFinded)
+    {
+        cites.forEach(cite =>
+        {
+            const {mascot, own, phone, date, hour, description, id} = cite;
+
+            mascotNameInput.value = mascot;
+            namePersonInput.value = own;
+            phoneInput.value = phone;
+            dateCiteInput.value = date;
+            timeCiteInput.value = hour;
+            descriptionInput.value = description;
+
+            cite.mascot = mascot;
+            cite.own = own;
+            cite.phone = phone;
+            cite.date = date;
+            cite.hour = hour;
+            cite.description = description;
+            cite.id = id;
+
+            btnSave.textContent = 'Editar';
+        });
+
+        console.log(cites);
+    }
+
+    deleteHtml();
+
+    console.log('formulario editando')
+}
