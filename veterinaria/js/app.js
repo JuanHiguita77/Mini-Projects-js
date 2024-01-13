@@ -22,11 +22,11 @@ let cites = [];
 //carga del DOM
 document.addEventListener('DOMContentLoaded', () => 
 {
+    //Obtiene los datos del localStorage y los asigna al mismo objeto de citas
+    cites = JSON.parse(localStorage.getItem('citeStorage')) || [];
+
     //Carga el html al recargar la pagina
     addCiteHtml();
-
-    //Obtiene los datos del localStorage y los asigna al mismo objeto de citas
-    citesStorage = JSON.parse(localStorage.getItem('citeStorage'));
 });
     
 //Boton guardar cita
