@@ -85,7 +85,7 @@ async function main()
 
     try
     {
-        const requestError = await axios.get('https://jsonplaceholder.typicode.com/usesrs');
+        const requestError = await axios.get('https://jsonplaceholder.typicode.com/userss'); //URL mala para el ejemplo
 
         console.log('Datos sin error: ', requestError);
     }
@@ -124,6 +124,23 @@ async function main()
     {
         console.log(error.response.status)
     }
+
+    //--------------------------------------------------------------------------------------------
+    //Instances: Crear configuraciones por defecto para las peticiones axios
+    //baseURL: url por default en esta configuracion.
+    //timeout: Podemos establecer el tiempo maximo que puede demorar un peticion antes de cancelarse
+    const configAxios = axios.create
+        ({
+            baseURL: 'https://jsonplaceholder.typicode.com',
+            timeout: 50,
+        }
+    )
+
+    //COn la configuracion establecidad en este caso podemos pasarle la ruta que necesitamos y se autocompleta
+    const requestGlobalConfig = await configAxios.get('/users');
+    const requestGlobalConfig1 = await configAxios.get('/posts'); 
+
+    console.log('Configuraciones globales: ', requestGlobalConfig, ' Y ', requestGlobalConfig1);
 }
 
 main()
