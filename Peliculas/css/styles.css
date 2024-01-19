@@ -109,3 +109,39 @@ body {
   padding: 10px 20px;
   border-radius: 10px;
 }
+
+
+/*CARD SHOW MORE*/
+
+.card-show-more
+{
+  display: flex;
+  width: 70%;
+  gap: 20px;
+}
+
+.card-show-more h2
+{
+  color: white;
+  font-size: 35px;
+}
+
+.card-show-more p
+{
+  color: white;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-top: 10px;
+}
+
+.card-show-more p span
+{
+  font-weight: normal;
+}
+
+.card-show-more .bx-arrow-back
+{
+  color: white;
+  cursor: pointer;
+  font-size: 24px;
+}

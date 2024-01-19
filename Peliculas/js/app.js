@@ -1,10 +1,31 @@
-//Selectores 
-const inputTitle = document.querySelector("#search")
+//Importaciones
+import {callToApi, loadShowMore} from './functions.js'
+
+//Selectores
+const inputTitle = document.querySelector("#search");
 const container = document.querySelector(".container-cards");
 
 let timer = 0;
 
 //Eventos
+container.addEventListener('click', (e) =>
+{
+    //Nos devuelve las clases del elemento clickeado
+    if(e.target.classList.contains('btn-show-more'))
+    {
+        //Extraemos el id del elemento
+        const id = e.target.getAttribute('id-movie')
+        
+        loadShowMore(id);
+    }
+
+    if(e.target.classList.contains('bx-arrow-back'))
+    {
+        callToApi(inputTitle.value);
+    }
+})
+
+
 inputTitle.addEventListener("input", (event) => {
     //Event = evento que ocurrió
     //target = la etiqueta donde ocurrió el evento
@@ -19,40 +40,6 @@ inputTitle.addEventListener("input", (event) => {
     }, 500);
 })
 
-//Función para hacer el llamado a la API
-async function callToApi(title) {
-    //Modifico la URL de la petición donde de añado el titulo de la pelicula
-    const URL = `https://www.omdbapi.com/?apikey=690d22ef&s=${title}`
-    //Realizo la petición HTTP con el servicio fetch
-    //Await = codigo no bloqueante A código bloqueante
-    
-    //const response = await fetch(URL)
-    const response = await axios.get(URL)
 
-    //const data = await response.json()
-    console.log(response.data.Search)
 
-    //printMovies(data.Search)
-    printMovies(response.data.Search)
-}
 
-//Función para mostrar las peliculas en el HTML
-function printMovies(movies) {
-    //Recorremos la lista
-    movies.forEach(movie => {
-        //Inyectar el HTML
-        container.innerHTML += `
-            <div class="card">
-                <h2 class="title-movie">${movie.Title}</h2>
-                <img
-                src="${movie.Poster}"
-                alt=""
-                />
-
-                <p>Año: <span>${movie.Year}</span></p>
-                <p>Tipo: <span>${movie.Type}</span></p>
-                <button>Ver más</button>
-            </div>
-        `;
-    });
-}
