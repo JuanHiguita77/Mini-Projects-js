@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="js/script.js" defer></script>
+    <title>JSON SERVER</title>
+</head>
+<body class="d-flex flex-column align-items-center p-5 justify-content-center">
+    
+    <form action="#" id="form">
+        <h1 class="text-center">Create and Update USERS</h1>
+
+        <input type="hidden" id="user-id">
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="user-name" placeholder="Your Name" required>
+            <label for="user-name">User Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="user-age" placeholder="Your Age" required>
+            <label for="user-age">User Age</label>
+        </div>
+
+        <button class="btn btn-outline-success w-100" type="submit">Send</button>
+    </form>
+
+    <h2 class="my-4">Users List</h2>
+    <section>
+        <table class="table table-danger table-hover text-center">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody> </tbody>
+          </table>
+    </section>
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</body>
+</html>
