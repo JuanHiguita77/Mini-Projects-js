@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');
+
+
+
+:root
+{
+    --primary-color: #A82c48;
+    --secondary-color: #43121d;
+    --third-color: #f98169;
+    --white-color: #fff;
+    --text-color: #999;
+    --black-color: #000;
+    --primary-font: 'Roboto', sans-serif;
+    --secondary-font:'Quicksand', sans-serif;
+}
+
+html
+{
+    scroll-behavior: smooth;
+}
+
+body
+{
+    font-family: var(--primary-font);
+    font-size: 100%;
+    font-weight: 400;
+}
+
+/*ANIMATION SCROLL IMAGES*/
+@keyframes show {
+	from {
+		opacity: 0;
+		scale: 25%;
+	}
+
+	to {
+		opacity: 1;
+		scale: 100%;
+	}
+}
+
+img {
+	view-timeline-name: --image;
+	view-timeline-axis: block;
+
+	animation-timeline: --image;
+	animation-name: show;
+
+	animation-range: entry 25% cover 30%;
+	animation-fill-mode: both;
+}
+/*ANIMATION SCROLL IMAGES*/
+
+
+/*HEADER*/
+.main-btn
+{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    font-family: var(--primary-font);
+    font-weight: 600;
+    transition: 0.6s;
+}
+
+.main-btn:hover
+{
+    color: var(--primary-color);
+    background-color: var(--white-color);
+}
+
+.nav-link
+{
+    color: var(--primary-color) !important;
+    font-family: var(--primary-font);
+    font-weight: 700 !important;
+}
+
+header .navbar
+{
+    box-shadow: 4px 6px 12px 0px rgba(0, 0, 0, 0.4);
+}
+
+header .navbar .logo
+{
+    max-width: 130px;
+}
+
+/*HEADER*/
+
+
+/*Scrollbar*/
+::-webkit-scrollbar
+{
+    width: 0.625rem;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color: var(--white-color);
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--primary-color);
+}
+
+/*TITULOS*/
+h1
+{
+    font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 3rem;
+    color: var(--secondary-color);
+}
+
+h2
+{
+    font-weight: 700;
+    font-size: 2.25rem;
+    text-transform: capitalize;
+    font-family: var(--secondary-font);
+    color: var(--secondary-color);
+    line-height: 3rem;
+}
+
+h4
+{
+    color: var(--secondary-color);
+    font-family: var(--secondary-color);
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+h5
+{
+    color: var(--primary-color);
+    text-transform: capitalize;
+    font-family: var(--secondary-font);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+p
+{
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+    line-height: 1.75rem;
+    letter-spacing: 1px;
+}
+
+/*Wrapper*/
+.wrapper
+{
+    padding-top: 8.25rem;
+    padding-bottom: 8.25rem;
+}
+
+.text-content
+{
+    width: 70%;
+    margin: auto;
+}
+
+.counter-section h2,
+.testimonial-section h2,
+.book-food-text h2
+{
+    color: var(--white-color);
+}
+
+
+/*BANNER TOP*/
+.white-btn
+{
+    color: var(--black-color);
+    background-color: var(--white-color);
+    border: 2px solid var(--white-color);
+    font-family: var(--primary-font);
+    font-weight: 600;
+    transition: 0.6s;
+    box-shadow: 0px 0px 6px 3px rgba(0, 0, 0, 0.2);
+}
+
+.white-btn:hover
+{
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+
+#home h1
+{
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.top-banner
+{
+    width: 100%;
+    background: url('../images/bg/bg-1.jpg') no-repeat center;
+    background-size: cover;
+    padding: 28.875rem 0 9.375rem;
+
+}
+
+/*SLOGAN POSITION BANNER*/
+.top-banner .container .row
+{
+    position: relative;
+    top: -97px;
+}
+
+/*COUNTER SECTION*/
+.counter-section
+{
+    background-color: var(--primary-color);
+    padding: 2.5rem 0;
+}
+
+.counter-section p
+{
+    color: var(--white-color);
+}
+
+.counter-section div h2
+{
+    font-family: var(--primary-font);
+    font-weight: 700;
+}
+/*COUNTER SECTION*/
+
+
+.about-section div h2
+{
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+.list-group i
+{
+    color: var(--primary-color);
+    font-size: 1.7rem;
+}
+
+/*STORY SECTION*/
+#story .story-section
+{
+    width: 100%;
+    height: 32.125rem;
+    background: url('../images/bg/bg-2.jpg') no-repeat center/cover;
+    padding-top: 100px;
+}
+
+#story .story-section h2
+{
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+}
+
+#story .story-section p
+{
+    color: var(--text-color);
+    font-size: 1.1rem;
+}
+/*STORY SECTION*/
+
+
+/*FOOD SECTION*/
+#foods .food-section h2
+{
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+#foods .food-section p
+{
+    color: var(--text-color);
+}
+
+#foods .cards span
+{
+    color: var(--primary-color);
+    font-family: var(--secondary-font);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+/*FOOD SECTION*/
+
+/*REVIEWS SECTION*/
+#reviews .testimonial-section
+{
+    background-color: var(--primary-color);
+}
+
+#reviews .testimonial-section h2
+{
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+#reviews .carousel-item img
+{
+    max-width: 7rem;
+    border-radius: 50%;
+    padding: 0.3125rem; 
+}
+
+#reviews .carousel-item
+{
+    background-color: var(--white-color);
+    border-radius: 15px;
+    margin-top: 3rem;
+    padding: 6rem 3.125rem;
+}
+
+#reviews .carousel-item p
+{
+    font-family: var(--secondary-font);
+    font-size: 1.325rem;
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+#reviews .carousel-item span
+{
+    color: var(--primary-color);
+    font-size: 1.325rem;
+    font-weight: 600;
+}
+
+#reviews .carousel-indicators button
+{
+    width: 15px;
+    height: 15px;
+    outline: none;
+    border-radius: 50%;
+    border: none;
+    margin-left: 1rem;
+    opacity: 0.2;
+}
+
+#reviews .carousel-indicators button.active
+{
+    opacity: 1;
+}
+
+#reviews .carousel-indicators
+{
+    bottom:-2.8125rem;
+}
+
+
+/*REVIEWS SECTION*/
+
+
+/* FAQ SECTION*/
+#faq h2
+{
+    font-size: 2.5rem;   
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+#faq span
+{
+    color: var(--primary-color);
+}
+/* FAQ SECTION*/
+
+
+/*BOOK FOOD*/
+.book-food
+{
+    background: url('../images/bg/bg-3.jpg') no-repeat center/cover;
+    width: 100%;
+    background-attachment: fixed;
+    background-position: 0 71.9125px;
+    padding: 4.375rem 0;
+}
+
+/*BOOK FOOD*/
+
+/*newsLetter*/
+#newslettar h2
+{
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 2.5rem;
+}
+
+#newslettar .form-control
+{
+    height: 60px;
+    border: 2px solid var(--primary-color);
+}
+
+#newslettar .form-control:focus:hover,
+#newslettar .form-control:focus
+{
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+
+/*Footer*/
+#footer
+{
+    background-color: var(--secondary-color);
+}
+
+#footer p
+{
+    color: var(--white-color);
+}
+
+
+
+/*ORDER NOW PAGE STYLES*/
+#orderNowTopBanner 
+{
+    max-height: 100vh;
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+
+#orderNowTopBanner .top-banner-order
+{
+    width: 100%;
+    padding: 28.875rem 0 0;
+}
+
+#orderNowTopBanner .top-banner-order .row
+{
+    margin: 0;
+}
+
+#orderNowTopBanner .container-fluid
+{
+    position: relative;
+    top: -255px;
+}
+
+#orderNowTopBanner .container-fluid h1
+{
+    font-size: 6rem;
+    font-family: var(--secondary-font);
+    font-weight: 700;
+}
+
+#orderNowTopBanner .container-fluid p
+{
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: var(--secondary-font);
+    color: var(--white-color);
+}
+
+#orderNowTopBanner .img-container 
+{
+    max-width: 1200px;
+    height: 680px;
+    overflow: hidden;
+    padding: 0px;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
+}
+
+#orderNowTopBanner .img-container img
+{
+    width: 100%;
+    height: 1290px;
+    position: relative;
+    top: -292px;
+
+}
+
+
+
+#orderNowTopBanner .container-fluid .order-text-container
+{
+    margin-left: 50px;
+}
+
+
+@media (max-width: 330px)
+{
+    
+}
+
+@media (max-width: 767px)
+{
+    
+}
+
+@media (max-width: 991px)
+{
+    
+}
+
+@media (max-width: 1024px)
+{
+
+}
