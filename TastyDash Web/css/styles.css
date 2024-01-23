@@ -12,6 +12,7 @@
     --black-color: #000;
     --primary-font: 'Roboto', sans-serif;
     --secondary-font:'Quicksand', sans-serif;
+    --background-color: #e6e6e6;
 }
 
 html
@@ -424,13 +425,14 @@ p
 
 
 /*ORDER NOW PAGE STYLES*/
+
+/*BANNER TOP*/
 #orderNowTopBanner 
 {
     max-height: 100vh;
     background: var(--primary-color);
     color: var(--white-color);
 }
-
 
 #orderNowTopBanner .top-banner-order
 {
@@ -454,6 +456,11 @@ p
     font-size: 6rem;
     font-family: var(--secondary-font);
     font-weight: 700;
+}
+
+#orderNowTopBanner .container-fluid .order-text-container
+{
+    margin-left: 50px;
 }
 
 #orderNowTopBanner .container-fluid p
@@ -481,13 +488,65 @@ p
     top: -292px;
 
 }
+/*BANNER TOP*/
 
-
-
-#orderNowTopBanner .container-fluid .order-text-container
+/*BANNER ICONS BOTTOM*/
+#orderNowBottomBanner
 {
-    margin-left: 50px;
+    height: 100px;
+    background-color: var(--background-color);
+
 }
+
+#orderNowBottomBanner p
+{
+    color: var(--black-color);
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: lighter;
+}
+
+#orderNowBottomBanner p img
+{
+    position: relative;
+    left: 120px;
+}
+/*BANNER ICONS BOTTOM*/
+
+/*PRODUCTS CONTAINER*/
+#productsContainer input
+{
+    border: none;
+    background: var(--background-color);
+    outline: none;
+}
+
+#productsContainer input:focus{
+
+    box-shadow: 0 1px 1px rgba(229, 103, 23, 0.075)inset, 0 0 8px var(--secondary-color);
+    outline: 0 none;
+}
+
+#productsContainer label
+{
+    margin: 0 auto;
+    font-weight: lighter;
+    color: var(--black-color);
+}
+/*PRODUCTS CONTAINER*/
+
+/*BASKET ICON*/
+#basket-container
+{
+    margin-top: 25px;
+}
+
+#basket-container i
+{
+    font-size: 2.8rem;
+}
+
+
 
 
 @media (max-width: 330px)
