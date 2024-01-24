@@ -428,10 +428,11 @@ p
 
 /*BANNER TOP*/
 #orderNowTopBanner 
-{
+{   
     max-height: 100vh;
     background: var(--primary-color);
     color: var(--white-color);
+    overflow: hidden;
 }
 
 #orderNowTopBanner .top-banner-order
@@ -445,39 +446,46 @@ p
     margin: 0;
 }
 
-#orderNowTopBanner .container-fluid
+#orderNowTopBanner .top-banner-order
 {
     position: relative;
     top: -255px;
 }
 
-#orderNowTopBanner .container-fluid h1
+#orderNowTopBanner .top-banner-order .order-text-container
 {
-    font-size: 6rem;
+    position: relative;
+    top: 105px;
+    z-index: 3;
+}
+
+#orderNowTopBanner .top-banner-order .order-text-container h1
+{
+    font-size: 3.5rem;
     font-family: var(--secondary-font);
     font-weight: 700;
+    text-align: center;
 }
 
-#orderNowTopBanner .container-fluid .order-text-container
-{
-    margin-left: 50px;
-}
-
-#orderNowTopBanner .container-fluid p
+#orderNowTopBanner .top-banner-order .order-text-container p
 {
     font-size: 1.6rem;
     font-weight: 400;
     font-family: var(--secondary-font);
     color: var(--white-color);
+    text-align: center;
 }
 
 #orderNowTopBanner .img-container 
 {
+    position: relative;
+    top: -445px;
     max-width: 1200px;
     height: 680px;
     overflow: hidden;
     padding: 0px;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
+    filter: brightness(50%);
 }
 
 #orderNowTopBanner .img-container img
@@ -495,7 +503,6 @@ p
 {
     height: 100px;
     background-color: var(--background-color);
-
 }
 
 #orderNowBottomBanner p
@@ -602,15 +609,22 @@ p
 /*PRODUCTS CARDS*/
 
 
-
 @media (max-width: 330px)
 {
-    
+    /*N/A*/
 }
 
 @media (max-width: 767px)
 {
-    
+    #orderNowTopBanner .img-container
+    {
+        top: -255px;
+    }
+
+    #orderNowTopBanner .top-banner-order .order-text-container
+    {
+        top: 160px;
+    }
 }
 
 @media (max-width: 991px)
@@ -620,5 +634,19 @@ p
 
 @media (max-width: 1024px)
 {
+    /*
+    #orderNowTopBanner .top-banner-order .order-text-container h1
+    {
+        font-size: 6rem;
+        font-family: var(--secondary-font);
+        font-weight: 700;
+    }
 
+    #orderNowTopBanner .top-banner-order .order-text-container p
+    {
+        font-size: 1.6rem;
+        font-weight: 400;
+        font-family: var(--secondary-font);
+        color: var(--white-color);
+    }*/
 }
