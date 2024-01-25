@@ -455,7 +455,7 @@ p
 #orderNowTopBanner .top-banner-order .order-text-container
 {
     position: relative;
-    top: 105px;
+    top: 94px;
     z-index: 3;
 }
 
@@ -481,7 +481,7 @@ p
     position: relative;
     top: -445px;
     max-width: 1200px;
-    height: 680px;
+    height: auto;
     overflow: hidden;
     padding: 0px;
     box-shadow: 0 0 18px rgba(0, 0, 0, 0.8);
@@ -600,8 +600,8 @@ p
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60%;
-    height: 30px;
+    width: 74%;
+    height: auto;
     margin: 0 auto;
     outline: none;
     border: 1px solid var(--black-color);
@@ -609,13 +609,16 @@ p
 /*PRODUCTS CARDS*/
 
 
-@media (max-width: 330px)
+@media screen and (min-width: 600px)
 {
-    /*N/A*/
+    
 }
 
-@media (max-width: 767px)
+@media screen and (min-width: 767px)
 {
+    /*ORDER NOW PAGE STYLES*/
+
+    /*BANNER TOP*/
     #orderNowTopBanner .img-container
     {
         top: -255px;
@@ -625,28 +628,54 @@ p
     {
         top: 160px;
     }
+    /*BANNER TOP*/
 }
 
-@media (max-width: 991px)
+@media (min-width: 991px)
 {
-    
-}
+    /*ORDER NOW PAGE STYLES*/
 
-@media (max-width: 1024px)
-{
-    /*
-    #orderNowTopBanner .top-banner-order .order-text-container h1
+    /*PRODUCTS CARDS*/
+    #productsContainer .card a
     {
-        font-size: 6rem;
-        font-family: var(--secondary-font);
-        font-weight: 700;
+        width: 87%;
+    }
+    /*PRODUCTS CARDS*/
+}
+
+@media (min-width: 1024px)
+{
+    /*ORDER NOW PAGE STYLES*/
+    
+    /*PRODUCTS CARDS*/
+    #productsContainer .card a
+    {
+        width: 60%;
+    }
+    /*PRODUCTS CARDS*/
+}
+
+@media (min-width: 1200px)
+{
+    /*ORDER NOW PAGE STYLES*/
+    /*VIDEO TOP CONTAINER*/
+    #orderNowTopBanner .img-container
+    {
+        top: -54px;
+        max-width: 70%;
+        height: 592px;
+        border-radius: 15px;
+    }
+    /*VIDEO TOP CONTAINER*/
+
+    #orderNowTopBanner .top-banner-order .order-text-container
+    {
+        top: -44px;
     }
 
-    #orderNowTopBanner .top-banner-order .order-text-container p
+    #orderNowBottomBanner p img
     {
-        font-size: 1.6rem;
-        font-weight: 400;
-        font-family: var(--secondary-font);
-        color: var(--white-color);
-    }*/
+        left: 3%;
+    }
 }
+
