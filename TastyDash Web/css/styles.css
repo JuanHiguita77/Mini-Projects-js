@@ -756,9 +756,8 @@ p
 #our-chefs
 {
     width: 100%;
-    height: 800px;
+    height: 100vh;
     overflow: hidden;
-    background-color: #f98169;
 }
 
 #our-chefs .top-banner-chefs
@@ -817,6 +816,7 @@ p
     align-items: center;
     text-align: center;
     padding: 30px 0;
+    
 }
 
 #our-famous-chefs .title-famous-chef h2
@@ -828,8 +828,33 @@ p
     margin: 0 auto;
 }
 
+#our-famous-chefs .container-famous-chefs .chef-img
+{
+    width: 100%;
+}
 
+#our-famous-chefs .container-famous-chefs .chef-img img
+{
+    width: 100%;
+}
 
+#our-famous-chefs .container-famous-chefs .chef-info
+{
+    width: 55%;
+}
+
+#our-famous-chefs .container-famous-chefs .chef-info h3,
+#our-famous-chefs .container-famous-chefs .chef-info p
+{
+    color: var(--secondary-color);
+    font-family: var(--secondary-font);
+}
+
+#our-famous-chefs .container-famous-chefs .chef-info h3
+{
+    font-size: 2rem;
+    font-weight: 600;
+}
 
 /*OUR CHEFS INFO*/
 
