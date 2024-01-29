@@ -660,7 +660,8 @@ p
 #ingredients-container-section .ingredients-content .container-third-img,
 #ingredients-container-section .ingredients-content .container-four-img,
 #ingredients-container-section .ingredients-content .container-five-img
-{
+{   
+    font-family: var(--secondary-font);
     height: 82vh;
     margin-bottom: 20px;
 }
@@ -691,7 +692,6 @@ p
 #ingredients-container-section .ingredients-content .container-third-img p
 {
     width: 75%;
-    font-family: var(--primary-font);
     color: var(--black-color);
     font-size: 1.9rem;
     line-height: 45px;
@@ -703,6 +703,7 @@ p
     overflow: hidden;
     padding: 0;
     margin-bottom: 0;
+    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.6);
 }
 
 #ingredients-container-section .ingredients-content .container-four-img video
@@ -711,7 +712,7 @@ p
     height: 100%;
     object-fit: cover;
     transform: scale(1.32);
-    filter: brightness(55%);
+    filter: brightness(65%);
 }
 
 #ingredients-container-section .ingredients-content .container-four-img p
@@ -719,8 +720,9 @@ p
     width: 90%;
     margin: 0 auto;
     color: var(--white-color);
-    font-family: var(--primary-font);
+    font-family: var(--secondary-font);
     font-size: 1.9rem;
+    font-weight: 600;
     line-height: 55px;
     position: relative;
     top: -345px;  
@@ -817,6 +819,13 @@ p
     /*INGREDIENTS PAGE DESING*/
 
     /*CONTENT DESING*/
+    #banner-image-top .banner-text-ingredients-container
+    {
+        width: 50%;
+        top: -440px;
+        left: 46px;
+    }
+    
     #banner-image-top .banner-text-ingredients-container h2 
     {
         font-size: 2.9rem;
@@ -827,11 +836,11 @@ p
         font-size: 1.3rem;
     }
 
-    #ingredients-container-section .ingredients-content p
+    #ingredients-container-section .ingredients-content .container-first-img p
     {
         width: 35%;
         font-size: 1.75rem;
-        top: -430px;
+        top: -500px;
     }
 
     #ingredients-container-section .ingredients-content .container-third-img p 
@@ -849,13 +858,51 @@ p
 
     #ingredients-container-section .ingredients-content .container-first-img,
     #ingredients-container-section .ingredients-content .container-second-img,
-    #ingredients-container-section .ingredients-content .container-third-img,
-    #ingredients-container-section .ingredients-content .container-four-img,
     #ingredients-container-section .ingredients-content .container-five-img
     {
         height: 100vh;
     }
 
+    #ingredients-container-section .ingredients-content .container-third-img,
+    #ingredients-container-section .ingredients-content .container-four-img
+    {
+        height: 55vh;
+        border-radius: 15px;
+    }
+    
+    #ingredients-container-section .ingredients-content .container-third-img
+    {
+        overflow: hidden;
+    }
+
+    #ingredients-container-section .ingredients-content .container-third-img img
+    {
+        width: 120%;
+    }
+
+    #ingredients-container-section .ingredients-content .container-third-img p
+    {
+        width: 45%;
+        font-size: 2rem;
+        line-height: 40px;
+        left: 20px;
+        top: -355px;
+    }
+
+    #ingredients-container-section .ingredients-content .row:nth-child(2)
+    {
+        padding-left: calc(var(--bs-gutter-x) * .5);
+    }
+
+    #ingredients-container-section .ingredients-content .container-four-img p
+    {
+        top: -255px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-five-img p
+    {
+        width: 95%;
+    }
     /*CONTENT DESING*/
     /*INGREDIENTS PAGE DESING*/
 
@@ -871,6 +918,40 @@ p
         width: 60%;
     }
     /*PRODUCTS CARDS*/
+
+
+
+    /*INGREDIENTS PAGE DESING*/
+
+    /*CONTENT DESING*/
+    #banner-image-top .banner-text-ingredients-container
+    {
+        width: 50%;
+        top: -440px;
+        left: 46px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-first-img p
+    {
+        top: -505px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-third-img,
+    #ingredients-container-section .ingredients-content .container-four-img
+    {
+        height: 60vh;
+    }
+
+    #ingredients-container-section .ingredients-content .container-four-img p
+    {
+        top: -260px;
+    }
+    /*CONTENT DESING*/
+    /*INGREDIENTS PAGE DESING*/
+
+
+
+
 }
 
 @media (min-width: 1200px)
@@ -887,7 +968,7 @@ p
     }
     /*VIDEO TOP CONTAINER*/
 
-    /**/
+    /*ORDER NOW PAGE STYLES*/
     #orderNowTopBanner .top-banner-order 
     {
         top: -166px;
@@ -902,5 +983,78 @@ p
     {
         left: 3%;
     }
+    /*ORDER NOW PAGE STYLES*/
+
+
+    /*INGREDIENTS PAGE DESING*/
+    /*CONTENT DESING*/
+
+    #ingredients-container-section .ingredients-content .container-first-img p 
+    {
+        top: -570px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-four-img p 
+    {
+        top: -305px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-five-img p 
+    {
+        top: -710px;
+    }
+
+    /*CONTENT DESING*/
+}
+
+@media (min-width: 1440px)
+{
+
+    /*INGREDIENTS PAGE DESING*/
+    /*CONTENT DESING*/
+    #banner-image-top .banner-text-ingredients-container 
+    {
+        top: -570px;
+    }
+
+    #banner-image-top .banner-text-ingredients-container h2 
+    {
+        font-size: 4.9rem;
+    }
+
+    #banner-image-top .banner-text-ingredients-container p 
+    {
+        font-size: 1.5rem;
+    }
+
+    #ingredients-container-section .ingredients-content .container-first-img p 
+    {   
+        font-size: 2rem;
+        top: -575px;
+        line-height: 40px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-four-img p 
+    {
+        font-size: 2.5rem;
+        top: -325px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-third-img p 
+    {
+        width: 40%;
+        font-size: 2.3rem;
+        line-height: 45px;
+        top: -400px;
+    }
+
+    #ingredients-container-section .ingredients-content .container-five-img p 
+    {
+        font-size: 2.4rem;
+        top: -780px;
+    }
+
+    /*INGREDIENTS PAGE DESING*/
+    /*CONTENT DESING*/
 }
 
