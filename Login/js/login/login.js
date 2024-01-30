@@ -11,15 +11,19 @@ formLogin.addEventListener("submit", (e)=>{
 })
 
  async function login() {
+    //Verificamos que este el correo
     const response =  await fetch(`${URL}?email=${userEmail.value}`)
     const data = await response.json()
+    //Muestra el correo encontrado
     console.log(data);
 
+    //Si no hay por lo menos un dato, muestra el mensaje
     if (!data.length) {
         showAlert("email no registrado");
         return
     }
-    if (data[0].password == userPassword.value) {
+    //Verifica la contraseña que le ingresan por input con el server
+    if (data[0].password === userPassword.value) {
         //autenticar 
         localStorage.setItem("isAuthenticated", "true")
         //  Window es un objeto global que nos permite acceder a las propiedades de la ventana

@@ -1,10 +1,26 @@
 {
-  "users": 
-  [
+  "users": [
     {
       "id": "6ae7",
       "email": "kevin@gmail.com",
       "password": "Qwerty123!"
+    },
+    {
+      "id": "ab17",
+      "email": "alejandromarulanda702@gmail.com",
+      "password": "Qwerty123!"
+    },
+    {
+      "id": "3d0b",
+      "email": "tojum@mailinator.com",
+      "password": "Pa$$w0rd!"
+    },
+    {
+      "id": "223e",
+      "email": "sucyhuhik@mailinator.com",
+      "password": "Pa$$w0rd!"
     }
-  ]
+  ],
+  "authors": [],
+  "books": []
 }

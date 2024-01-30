@@ -10,14 +10,14 @@
     //cort el path para acceder solo al archivo al que intenta acceder el usuario
     const routerActu = path.substring(path.lastIndexOf("/") +1)
 
-    console.log(isAuthenticated)
-    console.log(path);
-    console.log(routerActu);
+    // console.log(isAuthenticated)
+    // console.log(path);
+    // console.log(routerActu);
 
+    
     if (privateRoutes.includes(routerActu)&& !isAuthenticated) {
-        console.log("No tienes permisos")
-        window.location.href = "index.html"
+        console.log("No tienes permisos");
+        window.location.href = "index.html";
     }
 }
-    
 )()
