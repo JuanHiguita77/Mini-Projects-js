@@ -1,7 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap');
 
-
-
 :root
 {
     --primary-color: #A82c48;
@@ -875,6 +873,8 @@ p
 
 #awards .container-awards .title-award-container
 {
+    height: 100vh;
+    background-color: #A82c48;
     padding: 0;
     overflow: hidden;
 }
@@ -882,13 +882,13 @@ p
 #awards .container-awards .title-award-container .award-img
 {
     position: relative;
-    top: -100px;
-    height: 100vh;
+    top: -160px;
+    height: 120vh;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
     object-fit: cover;
-    filter: brightness(60%);
+    filter: brightness(50%);
     overflow: hidden;
 }
 
@@ -903,6 +903,26 @@ p
     z-index: 2;
 }
 
+#awards .container-awards .title-award-container p
+{
+    position: relative;
+    top: -720px;
+    font-size: 1.8rem;
+    font-family: var(--secondary-font);
+    font-weight: 400;
+    line-height: 35px;
+    color: var(--white-color);
+    width: 80%;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+#awards .container-awards .icons-award-container .reward-icon
+{
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 /*AWARDS INFO*/
 
 
