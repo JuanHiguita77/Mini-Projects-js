@@ -1,0 +1,50 @@
+{
+  "authors": [
+    {
+      "id": "b643",
+      "name": "Ulysses Howe",
+      "age": "92"
+    },
+    {
+      "id": "ac99",
+      "name": "Philip Johnson",
+      "age": "99"
+    },
+    {
+      "id": "3749",
+      "name": "Pascale Walls",
+      "age": "11"
+    },
+    {
+      "id": "b222",
+      "name": "Samantha Hooper",
+      "age": "5"
+    }
+  ],
+  "books": [
+    {
+      "id": "422b",
+      "title": "Ut unde aut natus ex",
+      "date": "1982-07-11",
+      "authorId": "b643"
+    },
+    {
+      "id": "7182",
+      "title": "Accusamus non aute v",
+      "date": "1973-12-03",
+      "authorId": "b643"
+    },
+    {
+      "id": "0d8c",
+      "title": "Mollit porro consect",
+      "date": "2013-11-07",
+      "authorId": "3749"
+    },
+    {
+      "id": "963c",
+      "title": "Velit repellendus C",
+      "date": "2005-02-15",
+      "authorId": "b222"
+    }
+  ]
+}
