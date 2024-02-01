@@ -918,7 +918,7 @@ p
 #awards .container-awards .title-award-container h2
 {
     position: relative;
-    top: 265px;
+    top: 150px;
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 50px;
@@ -929,7 +929,7 @@ p
 #awards .container-awards .title-award-container p
 {
     position: relative;
-    top: -840px;
+    top: -670px;
     font-size: 1.8rem;
     font-family: var(--secondary-font);
     font-weight: 400;
@@ -1011,20 +1011,6 @@ p
     }
     /*CONTENT DESING*/
     /*INGREDIENTS PAGE DESING*/
-
-    /*OUR CHEF DESING*/
-    /*AWARDS INFO*/
-    #awards .container-awards .title-award-container h2
-    {
-        top: 310px;
-    }
-
-    #awards .container-awards .title-award-container p
-    {
-        top: -780px;
-    }
-    /*AWARDS INFO*/
-    /*OUR CHEF DESING*/
 
 }
 
@@ -1167,7 +1153,7 @@ p
     #awards .container-awards .title-award-container h2
     {
         font-size: 2.8rem;
-        top: 300px;
+        top: 200px;
     }
 
     #awards .container-awards .title-award-container p
