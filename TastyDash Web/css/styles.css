@@ -579,6 +579,30 @@ p
 }
 /*BASKET ICON*/
 
+/*ARROW TOP SCROLL*/
+.scroll-top 
+{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    z-index: 9999;
+    opacity: 0.8;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.scroll-top:hover 
+{
+    opacity: 1;
+}
+/*ARROW TOP SCROLL*/
+
 
 /*PRODUCTS CARDS*/
 #productsContainer .card
@@ -894,7 +918,7 @@ p
 #awards .container-awards .title-award-container h2
 {
     position: relative;
-    top: 130px;
+    top: 265px;
     font-size: 2.4rem;
     font-weight: 700;
     line-height: 50px;
@@ -905,7 +929,7 @@ p
 #awards .container-awards .title-award-container p
 {
     position: relative;
-    top: -720px;
+    top: -840px;
     font-size: 1.8rem;
     font-family: var(--secondary-font);
     font-weight: 400;
@@ -940,12 +964,8 @@ p
 }
 
 /*AWARDS INFO*/
+/*CHEF DESING*/
 
-
-@media screen and (min-width: 600px)
-{
-    /*N/A*/
-}
 
 @media screen and (min-width: 767px)
 {
@@ -991,6 +1011,20 @@ p
     }
     /*CONTENT DESING*/
     /*INGREDIENTS PAGE DESING*/
+
+    /*OUR CHEF DESING*/
+    /*AWARDS INFO*/
+    #awards .container-awards .title-award-container h2
+    {
+        top: 310px;
+    }
+
+    #awards .container-awards .title-award-container p
+    {
+        top: -780px;
+    }
+    /*AWARDS INFO*/
+    /*OUR CHEF DESING*/
 
 }
 
@@ -1133,16 +1167,12 @@ p
     #awards .container-awards .title-award-container h2
     {
         font-size: 2.8rem;
+        top: 300px;
     }
 
     #awards .container-awards .title-award-container p
     {
         font-size: 2rem;
-    }
-
-    #awards .container-awards .title-award-container h2
-    {
-        top: 300px;
     }
 
     #awards .container-awards .title-award-container p
@@ -1216,6 +1246,16 @@ p
     {
         flex-direction: row;
         height: inherit;
+    }
+
+    #awards .container-awards .title-award-container h2
+    {
+        top: 390px;
+    }
+
+    #awards .container-awards .title-award-container p
+    {
+        top: -700px;
     }
     /*AWARDS INFO*/
 
