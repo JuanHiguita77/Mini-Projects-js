@@ -103,6 +103,8 @@ header .navbar .logo
 {
     background-color: var(--primary-color);
 }
+/*Scrollbar*/
+
 
 /*TITULOS*/
 h1
@@ -614,8 +616,6 @@ p
 
 
 
-
-
 /*INGREDIENTS PAGE DESING*/
 
 /*BANNER TOP*/
@@ -813,7 +813,7 @@ p
     display: flex;
     align-items: center;
     text-align: center;
-    padding: 30px 0;
+    padding: 50px 0;
 }
 
 #our-famous-chefs .title-famous-chef h2
@@ -1195,6 +1195,10 @@ p
     /*CONTENT DESING*/
     /*INGREDIENTS PAGE DESING*/
 
+
+    /*CHEFS DESING*/
+
+    /*OUR CHEFS INFO*/
     #our-famous-chefs .container-famous-chefs .chef-img
     {
         width: 50%;
@@ -1205,13 +1209,17 @@ p
         width: 50%;
         padding-top: 100px;
     }
+    /*OUR CHEFS INFO*/
 
+    /*AWARDS INFO*/
     #awards .container-awards .icons-award-container
     {
         flex-direction: row;
         height: inherit;
     }
+    /*AWARDS INFO*/
 
+    /*CHEFS DESING*/
 }
 
 @media (min-width: 1200px)
@@ -1264,6 +1272,7 @@ p
         top: -710px;
     }
     /*CONTENT DESING*/
+    /*INGREDIENTS PAGE DESING*/
 
 }
 
@@ -1318,6 +1327,10 @@ p
     /*CONTENT DESING*/
 
 
+    
+    /*CHEFS DESING*/
+
+    /*OUR CHEFS INFO*/
     #our-famous-chefs .container-famous-chefs .chef-img img
     {
         height: 100vh;
@@ -1352,18 +1365,22 @@ p
     {
         font-size: 2rem;
     }
+    /*OUR CHEFS INFO*/
 
+    /*AWARDS INFO*/
     #awards .container-awards .title-award-container h2
     {
         font-size: 3.5rem;
-        top: 410px;
+        top: 340px;
     }
 
     #awards .container-awards .title-award-container p
     {
         width: 70%;
         font-size: 2.5rem;
-        top: -770px;
+        top: -700px;
     }
+    /*AWARDS INFO*/
+    /*CHEFS DESING*/
 }
 
