@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () =>
         counter('count3', 0, 1355, 3000);
         counter('count4', 0, 2532, 1000);
     }
+
+    //FOOD FETCHING 
+    getFoods();
 });
 
 inputFood.addEventListener('input', () =>
@@ -22,8 +25,17 @@ inputFood.addEventListener('input', () =>
     {
         //Fetching food data
         getFoods();
+    }, 300);
+})
 
-    }, 500);
+cardsContainer.addEventListener('click', (e) =>
+{
+    if(e.target.classList.contains('openModalInfo'))
+    {
+        const id = e.target.getAttribute('id-food')
+        
+        loadShowMore(id);
+    }
 })
 
 //COUNTER SECTION
@@ -68,20 +80,32 @@ async function getFoods()
     }
 }
 
+
+
 //Print HTML Cards
 function foodPrintHtml(foods)
 {
     cleanHtml();
+    
+    //SEARCH MESSAGE ORDER NOW  
+    cardsContainer.innerHTML = `<h2 class="text-center my-5 fw-bold">¡TYPE YOUR FAVORITE INGREDIENT FOR YOUR MEAL!</h2>`;
+    
+    
     if(foods)
     {
         foods.forEach( food => 
-        {
+            {
+            const randomPrice = Math.floor(Math.random() * (25000 - 7500 + 1)) + 7500;
+
             cardsContainer.innerHTML += `
                 <div class="card card-body col-12 col-lg-4 rounded-3 mx-3 my-5" style="width: 18rem;">  
-                    <div class="text-center">
-                        <h2 class="card-title fw-bold">Card title</h2>
-                        <img src="../images/img/img-1.png" class="card-image img-fluid mx-auto my-3 rounded-3" alt="">
-                        <a href="#" class="btn btn-primary bg-black rounded-5 mt-4">Add To Cart $<span class="text-white priceCard">9000</span></a>
+                    <div class="text-center d-flex flex-column align-items-stretch">
+                        <img src="${food.strMealThumb}" id-food=${food.idmeal} class="card-image img-fluid mx-auto my-3 rounded-3 openModalInfo" alt="food">
+                        <h2 class="card-title fw-bold mb-5">${food.strMeal}</h2>
+                        
+                        <div class="fixed-bottom">
+                            <a href="#" class="btn btn-primary rounded-5 text-center mb-3">Add To Cart $-<span class="text-white priceCard">${randomPrice}</span></a>
+                        </div>
                     </div>
                 </div>
             `    
@@ -89,9 +113,50 @@ function foodPrintHtml(foods)
     }
     else
     {
-        cardsContainer.innerHTML = 'SORRY, MEAL NOT FOUND!';    
+        cardsContainer.innerHTML = `<h2 class="text-center my-5 fw-bold">¡SORRY, MEAL NOT FOUND!!</h2>`;    
     }
 
+}
+
+async function loadShowMore(id)
+{
+    try
+    {
+        const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+
+        const response = await fetch(URL);
+        const data = response.json();
+
+        console.log('Respuesta de la comida: ', data);
+
+        printShowMore(data);
+    }
+    catch(err)
+    {
+        console.log('Pelicula no encontrada', err)
+    }
+}
+
+
+function printShowMore(foodData)
+{
+
+    const { strMeal, strArea, strInstructions, strMealThumb } = foodData;
+
+    container.innerHTML = 
+    `
+        <div class="card-show-more">
+                                                
+            <iframe class="mx-auto" width="800" height="560" src="https://www.youtube.com/embed/${links.youtube_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div>
+                <h2>${strMeal}</h2>
+                <p>Cohete: <span>${strArea}</span></p>
+                <p>Rocket Type: <span>${strInstructions}</span></p>
+                <p>Succes?: <span>${strMealThumb ? 'Success Nice!!' : 'Noooo!, Destroy total!'}</span></p>
+            </div> 
+            <i class='bx bx-arrow-back'></i>
+        </div>
+    `;
 }
 
 //Clean Childs from HTML

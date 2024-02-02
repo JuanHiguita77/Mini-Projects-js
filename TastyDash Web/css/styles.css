@@ -621,6 +621,8 @@ p
 
 #productsContainer .card a
 {   
+    font-family: var(--secondary-font);
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -629,6 +631,13 @@ p
     margin: 0 auto;
     outline: none;
     border: 1px solid var(--black-color);
+    background-color: var(--black-color);
+    transition: 0.2s all ease-in-out;
+}
+
+#productsContainer .card a:hover
+{
+    background: var(--primary-color);
 }
 
 #productsContainer .cards-container .card img
@@ -1178,7 +1187,7 @@ p
     /*PRODUCTS CARDS*/
     #productsContainer .card a
     {
-        width: 60%;
+        width: 70%;
     }
     /*PRODUCTS CARDS*/
 
