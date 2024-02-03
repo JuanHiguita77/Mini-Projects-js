@@ -1,8 +1,11 @@
 //Selectors
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
 
+//const shoppingCart = document.querySelector('#basket-container');
 const cardsContainer = document.querySelector('.cards-container .row');
 const inputFood = document.querySelector('#foodSearch');
+const modalFoodInfo = document.querySelector('#modalFoodInfo .modal-body');
+const modalCartFood = document.querySelector('#modalCartFood .cartProducts');
 
 document.addEventListener('DOMContentLoaded', () =>
 {
@@ -14,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () =>
         counter('count3', 0, 1355, 3000);
         counter('count4', 0, 2532, 1000);
     }
-
+    printShopCart()
     //FOOD FETCHING 
     getFoods();
 });
@@ -26,7 +29,7 @@ inputFood.addEventListener('input', () =>
         //Fetching food data
         getFoods();
     }, 300);
-})
+});
 
 cardsContainer.addEventListener('click', (e) =>
 {
@@ -34,6 +37,7 @@ cardsContainer.addEventListener('click', (e) =>
     {
         const id = e.target.getAttribute('id-food')
         
+        //OPEN MODAL FOOD INFO
         loadShowMore(id);
     }
 })
@@ -65,22 +69,17 @@ async function getFoods()
     //Food search param
     try
     {
-        const response = await fetch(`${URL}filter.php?i=${inputFood.value}`);
+        const response = await fetch(`${URL}filter.php?i=${inputFood.value.toLowerCase()}`);
         const data = await response.json();
         
         //Print HTML Cards
-
         foodPrintHtml(data.meals);
-
-        console.log(data);
     }
     catch(error)
     {
         console.log('Error en la peticion', error )
     }
 }
-
-
 
 //Print HTML Cards
 function foodPrintHtml(foods)
@@ -94,13 +93,13 @@ function foodPrintHtml(foods)
     if(foods)
     {
         foods.forEach( food => 
-            {
+        {
             const randomPrice = Math.floor(Math.random() * (25000 - 7500 + 1)) + 7500;
 
             cardsContainer.innerHTML += `
                 <div class="card card-body col-12 col-lg-4 rounded-3 mx-3 my-5" style="width: 18rem;">  
                     <div class="text-center d-flex flex-column align-items-stretch">
-                        <img src="${food.strMealThumb}" id-food=${food.idmeal} class="card-image img-fluid mx-auto my-3 rounded-3 openModalInfo" alt="food">
+                        <img src="${food.strMealThumb}" id-food=${food.idMeal} class="card-image img-fluid mx-auto my-3 rounded-3 openModalInfo" data-bs-toggle="modal" data-bs-target="#modalFoodInfo" alt="food">
                         <h2 class="card-title fw-bold mb-5">${food.strMeal}</h2>
                         
                         <div class="fixed-bottom">
@@ -125,36 +124,81 @@ async function loadShowMore(id)
         const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
 
         const response = await fetch(URL);
-        const data = response.json();
+        const data = await response.json();
 
-        console.log('Respuesta de la comida: ', data);
-
-        printShowMore(data);
+        console.log(data.meals);
+        printShowMore(data.meals[0]);
     }
     catch(err)
     {
-        console.log('Pelicula no encontrada', err)
+        console.log('Error obteniendo los detalles del alimento: ', err)
     }
 }
 
 
 function printShowMore(foodData)
 {
+    const { strMeal, strArea, strMealThumb, strIngredient1, strIngredient2, strIngredient3 } = foodData;
 
-    const { strMeal, strArea, strInstructions, strMealThumb } = foodData;
-
-    container.innerHTML = 
+    //Modal Info adding
+    modalFoodInfo.innerHTML += 
     `
-        <div class="card-show-more">
-                                                
-            <iframe class="mx-auto" width="800" height="560" src="https://www.youtube.com/embed/${links.youtube_id}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <div class="card-body mx-auto my-auto w-100" style="width: 12rem;">
+
+            <div class="row">
+                <h3 class="card-title mt-4 mt-lg-4 mb-lg-3 text-center d-lg-none">${strMeal}</h3>
+
+                <div class="col-lg-6 text-center">
+                    <img src="${strMealThumb}" class="card-image img-fluid my-3 rounded-3 mb-2 mb-lg-3" alt="">
+                </div>
+
+                <div class="col-lg-6 text-center sub-container">
+                    <h3 class="card-title mt-4 mt-lg-5 mb-lg-3 d-none d-lg-block">${strMeal}</h3>
+
+                    <h3>Area: ${strArea}</h3>
+                    <h3>Principal Ingredients: </h3>
+                    <ul>
+                        <li>${strIngredient1}</li>
+                        <li>${strIngredient2}</li>
+                        <li>${strIngredient3}</li>  
+                    </ul>
+                    <h3 class="price mt-3 mt-lg-4">PRICE
+                        <span class="card-price mb-3"></span>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function printShopCart()
+{
+    //Modal Info adicional de la comida desde html y aqui se incrustan los datos
+    modalCartFood.innerHTML = 
+    `
+        <div class="card card-body d-flex col-12 col-lg-4 rounded-3 mx-2 my-2" style="width: 17rem;">  
             <div>
-                <h2>${strMeal}</h2>
-                <p>Cohete: <span>${strArea}</span></p>
-                <p>Rocket Type: <span>${strInstructions}</span></p>
-                <p>Succes?: <span>${strMealThumb ? 'Success Nice!!' : 'Noooo!, Destroy total!'}</span></p>
-            </div> 
-            <i class='bx bx-arrow-back'></i>
+                <h3 class="card-title fs-2 fs-sm-4 text-center">TITLE</h3>
+                <img src="../images/img/img-3.jpg" class="card-image img-fluid mx-auto my-3 rounded-3" alt="">
+                <h3 class="fs-5 mt-3">PRICE
+                    <span class="card-price mb-3 float-end">$10.990</span>
+                </h3>
+
+                <div class="d-flex justify-content-between w-100">
+                    <h3 class="fs-5 mb-0">QUANTITY</h3>
+
+                    <select class="rounded-2 text-center select-quantity">
+                    <option value="uno">1</option>
+                    <option value="dos">2</option>
+                    <option value="tres">3</option>
+                    <option value="cuatro">4</option>
+                    </select>
+                </div>
+
+                <h3 class="total-title fs-5 mt-3">TOTAL
+                    <span class="card-price mb-3 float-end">$10.990</span>
+                </h3>
+            </div>
         </div>
     `;
 }

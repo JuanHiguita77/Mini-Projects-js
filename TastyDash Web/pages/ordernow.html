@@ -104,9 +104,8 @@
 
         <!-- Basket icon -->
         <div id="basket-container" class="container-fluid text-center">
-           <button type="button" class="btn position-relative">
+           <button type="button" class="btn position-relative" data-bs-toggle="modal" data-bs-target="#modalCartFood">
                 <a class="text-black" href="#"><i class="bi bi-basket2-fill"></i></a>
-                
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                     99+
                     <span class="visually-hidden">products cuantity</span>
@@ -117,11 +116,81 @@
         <!-- cards -->
         <div class="container cards-container">
             <div class="row">
-
-
+                <!-- JAVASCRIPT CARDS ADDING -->
             </div>
         </div>
     </section>
+
+    <!-- Modal food additional info -->
+    <div class="modal fade" id="modalFoodInfo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <!-- JAVASCRIPT INFO FOOD ADDING -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shopping cart modal -->
+    <div class="modal fade" id="modalCartFood" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body modal-carrito d-block">
+
+                    <!-- Titulo principal para pantallas pequeñas -->
+                    <h1 class="tituloPricipalCarritoScreenSmall text-center mt-4 d-block">Your Cart</h1>
+
+                    <div>
+                        <!-- Contenedor de tarjetas -->
+                        <div class="container cards-container">
+                            <div class="row p-0">
+                                <div class="container d-flex flex-wrap col-lg-8 cartProducts">
+                                    <!-- JAVASCRIPT PRODUCTS CART ADDING -->
+                                </div>   
+
+                                <!-- Contenedor del checkout de pago -->
+                                <div class="col-lg-4">
+                                    <div class="card card-final-price  w-100 rounded-4 mt-2" style="width: 17rem;">
+                                        <div class="card-body">
+                                            <h5 class="card-title mb-2">Order Summary</h5>
+                                            <hr class="mt-2">
+                                            <h6 class="card-subtitle mb-4 text-body-dark mt-4">Subtotal
+                                            <span class="mb-3 float-end"> $11.800</span>
+                                            </h6>
+                                            <h6 class="card-subtitle mb-2 text-body-dark">Shipping 
+                                            <span class="mb-3 float-end">Free</span>
+                                            </h6>
+                                            <hr>
+                                            <h6 class="card-subtitle mb-1 text-body-dark">Total 
+                                            <span class="mb-3 float-end"> $11.800</span>
+                                            </h6>
+                                        </div>
+                                    </div>
+
+                                    <!-- Boton checkout -->
+                                    <button class="btn btn-primary rounded-3 text-center mt-2 w-100">CHECKOUT</button>
+
+                                    <!-- Logo principal en checkout -->
+                                    <div class="cart-icon-container d-none d-lg-flex"> 
+                                        <img class="img-fluid" src="../images/logo.png" alt="tastydash">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <a href="#" class="scroll-top"><i class="bi bi-arrow-bar-up"></i></a>
     <!-- Footer -->
