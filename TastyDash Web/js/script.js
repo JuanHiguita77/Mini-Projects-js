@@ -65,21 +65,26 @@ cardsContainer.addEventListener('click', (e) =>
 
 modalCartFood.addEventListener('click', (e) =>
 {
+
     if(e.target.classList.contains('select-quantity'))
     {    
-        let totalPriceIndividual = 0;
-        let price = 0;
-        let selectQuantity = 0;
+        const selectInput = e.target;
 
-        price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
-        selectQuantity = e.target.value;
-        
-        totalPriceIndividual = price * selectQuantity;
-
-        e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
+        selectInput.addEventListener('change', ()=>
+        {
+            let totalPriceIndividual = 0;
+            let price = 0;
+            let selectQuantity = 0;
+    
+            price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
+            selectQuantity = e.target.value;
+            
+            totalPriceIndividual = price * selectQuantity;
+    
+            e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
+        })
     }
 });
-
 
 //COUNTER SECTION
 function counter(id, start, end, duration)
@@ -112,7 +117,7 @@ async function getFoods()
         const data = await response.json();
         
         //Print HTML Cards
-        foodPrintHtml(data.meals.slice(0,100));
+        foodPrintHtml(data.meals);
     }
     catch(error)
     {
@@ -127,11 +132,10 @@ function foodPrintHtml(foods)
     
     //SEARCH MESSAGE ORDER NOW  
     cardsContainer.innerHTML = `<h2 class="text-center my-5 fw-bold">¡TYPE YOUR FAVORITE INGREDIENT FOR YOUR MEAL!</h2>`;
-    
-    
+
     if(foods)
     {
-        foods.forEach( food => 
+        foods.slice(0,100).forEach( food => 
         {
             const randomPrice = Math.floor(Math.random() * (25000 - 7500 + 1)) + 7500;
 
@@ -167,7 +171,6 @@ async function loadShowMore(id)
         const response = await fetch(URL);
         const data = await response.json();
 
-        console.log(data.meals);
         printShowMore(data.meals[0]);
     }
     catch(err)
@@ -175,7 +178,6 @@ async function loadShowMore(id)
         console.log('Error obteniendo los detalles del alimento: ', err)
     }
 }
-
 
 function printShowMore(foodData)
 {
@@ -222,7 +224,6 @@ function addProductCart(price,titleFood, imgFood)
     printShopCart(shopCart);
 }
 
-//Llamar desde cada boton de compra
 function printShopCart(shopCart)
 {
     cleanHtmlCart();
@@ -235,8 +236,8 @@ function printShopCart(shopCart)
         `
             <div class="card card-body d-flex col-12 col-lg-4 rounded-3 mx-2 my-2" style="width: 17rem;">  
                 <div>
-                    <h3 class="card-title fs-2 fs-sm-4 text-center">${titleFood}</h3>
                     <img src="${imgFood}" class="card-image img-fluid mx-auto my-3 rounded-3" alt="">
+                    <h3 class="card-title fs-2 fs-sm-4 text-center">${titleFood}</h3>
                     <h3 class="fs-5 mt-3">PRICE
                     <span class="float-end">$</span><span class="card-price mb-3 float-end priceFoodCart">${price}</span>
                     </h3>
