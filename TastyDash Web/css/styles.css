@@ -619,7 +619,7 @@ p
 
 }
 
-#productsContainer .card a
+#productsContainer .card .addCart
 {   
     font-family: var(--secondary-font);
     font-weight: 600;
@@ -635,9 +635,14 @@ p
     transition: 0.2s all ease-in-out;
 }
 
-#productsContainer .card a:hover
+#productsContainer .card .addCart:hover
 {
     background: var(--primary-color);
+}
+
+#productsContainer .card .priceCard
+{
+    color: var(--primary-color);
 }
 
 #productsContainer .cards-container .card img
@@ -721,18 +726,10 @@ p
 /* Tamaño de los h3 en pantallas pequeñas */
 #modalInfo .modal-body .card-body h3 
 {
-
     font-size: 1.3rem;
 }
 /* Tamaño de los h3 en pantallas pequeñas */
 
-/* Tamaño de los p en pantallas pequeñas */
-#modalInfo .modal-body .card-body p 
-{
-
-    font-size: 1.2rem;
-}
-/* Tamaño de los p en pantallas pequeñas */
 
 /*Boton abrir modal */
 #btnAbrirModalInfo 
@@ -851,7 +848,7 @@ p
     height: 100%;
     object-fit: cover;
     transform: scale(1.32);
-    filter: brightness(65%);
+    filter: brightness(70%);
 }
 
 #ingredients-container-section .ingredients-content .container-four-img p
@@ -1198,9 +1195,8 @@ p
     /* Tamaño del modal */
 
     /* Centrado de los elementos del contenedor */
-    #modalInfo .modal-body .card-body .sub-container 
+    #modalFoodInfo .modal-body .card-body .sub-container 
     {
-
         margin-top: -1.8rem;
     }
     /* Centrado de los elementos del contenedor */
@@ -1391,14 +1387,6 @@ p
         --bs-modal-width: 1050px;
     }
     /* Tamaño del modal */
-
-    /* Centrado de los elementos del contenedor */
-    #modalInfo .modal-body .card-body .sub-container 
-    {
-        margin-top: 1rem;
-    }
-    /* Centrado de los elementos del contenedor */
-
 
     /* Tamaño de los h3 */
     #modalInfo .modal-body .card-body h3 

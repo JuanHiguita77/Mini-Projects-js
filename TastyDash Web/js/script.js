@@ -1,11 +1,15 @@
 //Selectors
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
 
-//const shoppingCart = document.querySelector('#basket-container');
 const cardsContainer = document.querySelector('.cards-container .row');
 const inputFood = document.querySelector('#foodSearch');
 const modalFoodInfo = document.querySelector('#modalFoodInfo .modal-body');
 const modalCartFood = document.querySelector('#modalCartFood .cartProducts');
+const quantityProducts = document.querySelector('#quantityProducts');
+const basketContainer = document.querySelector('#basket-container');
+
+//Cart products full
+const shopCart = [];
 
 document.addEventListener('DOMContentLoaded', () =>
 {
@@ -17,7 +21,12 @@ document.addEventListener('DOMContentLoaded', () =>
         counter('count3', 0, 1355, 3000);
         counter('count4', 0, 2532, 1000);
     }
-    printShopCart()
+
+    //MESSAGE EMPTY SHOP CART
+    modalCartFood.innerHTML = `<h2 class="text-center my-5 fw-bold">¡CALM YOUR HUNGRY NOW!</h2>`;
+
+    //COUNTER QUANTITY PRODUCT CART
+    quantityProducts.textContent = 0;
     //FOOD FETCHING 
     getFoods();
 });
@@ -40,7 +49,37 @@ cardsContainer.addEventListener('click', (e) =>
         //OPEN MODAL FOOD INFO
         loadShowMore(id);
     }
+
+    if(e.target.classList.contains('addCart'))
+    {
+        const price = parseInt(e.target.parentElement.parentElement.querySelector('.priceCard').textContent);
+        const titleFood = e.target.parentElement.parentElement.querySelector('.titleCartFood').textContent;
+        const imgFood = e.target.parentElement.parentElement.querySelector('img').src;
+        
+        e.target.disabled = true;   
+        quantityProducts.textContent = shopCart.length + 1;
+
+        addProductCart(price,titleFood, imgFood);
+    }
 })
+
+modalCartFood.addEventListener('click', (e) =>
+{
+    if(e.target.classList.contains('select-quantity'))
+    {    
+        let totalPriceIndividual = 0;
+        let price = 0;
+        let selectQuantity = 0;
+
+        price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
+        selectQuantity = e.target.value;
+        
+        totalPriceIndividual = price * selectQuantity;
+
+        e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
+    }
+});
+
 
 //COUNTER SECTION
 function counter(id, start, end, duration)
@@ -73,7 +112,7 @@ async function getFoods()
         const data = await response.json();
         
         //Print HTML Cards
-        foodPrintHtml(data.meals);
+        foodPrintHtml(data.meals.slice(0,100));
     }
     catch(error)
     {
@@ -84,7 +123,7 @@ async function getFoods()
 //Print HTML Cards
 function foodPrintHtml(foods)
 {
-    cleanHtml();
+    cleanHtmlFoodCardsContainer();
     
     //SEARCH MESSAGE ORDER NOW  
     cardsContainer.innerHTML = `<h2 class="text-center my-5 fw-bold">¡TYPE YOUR FAVORITE INGREDIENT FOR YOUR MEAL!</h2>`;
@@ -100,10 +139,12 @@ function foodPrintHtml(foods)
                 <div class="card card-body col-12 col-lg-4 rounded-3 mx-3 my-5" style="width: 18rem;">  
                     <div class="text-center d-flex flex-column align-items-stretch">
                         <img src="${food.strMealThumb}" id-food=${food.idMeal} class="card-image img-fluid mx-auto my-3 rounded-3 openModalInfo" data-bs-toggle="modal" data-bs-target="#modalFoodInfo" alt="food">
-                        <h2 class="card-title fw-bold mb-5">${food.strMeal}</h2>
-                        
+
+                        <h2 class="card-title fw-bold mb-5 titleCartFood">${food.strMeal} </h2>
+                        <h2 class="card-title fw-bold mb-5">Price $: <span class="priceCard">${randomPrice}</span> </h2>
+
                         <div class="fixed-bottom">
-                            <a href="#" class="btn btn-primary rounded-5 text-center mb-3">Add To Cart $-<span class="text-white priceCard">${randomPrice}</span></a>
+                            <button class="btn btn-dark rounded-5 text-center mb-3 addCart">Add To Cart</button>
                         </div>
                     </div>
                 </div>
@@ -141,7 +182,7 @@ function printShowMore(foodData)
     const { strMeal, strArea, strMealThumb, strIngredient1, strIngredient2, strIngredient3 } = foodData;
 
     //Modal Info adding
-    modalFoodInfo.innerHTML += 
+    modalFoodInfo.innerHTML = 
     `
         <div class="card-body mx-auto my-auto w-100" style="width: 12rem;">
 
@@ -152,62 +193,87 @@ function printShowMore(foodData)
                     <img src="${strMealThumb}" class="card-image img-fluid my-3 rounded-3 mb-2 mb-lg-3" alt="">
                 </div>
 
-                <div class="col-lg-6 text-center sub-container">
+                <div class="col-lg-6 text-center text-lg-start d-flex flex-column justify-content-center sub-container">
                     <h3 class="card-title mt-4 mt-lg-5 mb-lg-3 d-none d-lg-block">${strMeal}</h3>
 
-                    <h3>Area: ${strArea}</h3>
-                    <h3>Principal Ingredients: </h3>
-                    <ul>
-                        <li>${strIngredient1}</li>
-                        <li>${strIngredient2}</li>
-                        <li>${strIngredient3}</li>  
+                    <h3 class="mb-5">Area: <span class="fw-lighter">${strArea}</span></h3>
+                    <h3>Principal Ingredients</h3>
+                    <ul class="list-group list-group-flush fs-5">
+                        <li class="list-group-item">${strIngredient1}</li>
+                        <li class="list-group-item">${strIngredient2}</li>
+                        <li class="list-group-item">${strIngredient3}</li>  
                     </ul>
-                    <h3 class="price mt-3 mt-lg-4">PRICE
-                        <span class="card-price mb-3"></span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+function addProductCart(price,titleFood, imgFood)
+{
+    const meal = 
+    {
+        titleFood,
+        price,
+        imgFood
+    }
+
+    shopCart.push(meal);
+    printShopCart(shopCart);
+}
+
+//Llamar desde cada boton de compra
+function printShopCart(shopCart)
+{
+    cleanHtmlCart();
+    
+    shopCart.forEach( food =>
+    {
+        const { price, titleFood, imgFood} = food;
+
+        modalCartFood.innerHTML += 
+        `
+            <div class="card card-body d-flex col-12 col-lg-4 rounded-3 mx-2 my-2" style="width: 17rem;">  
+                <div>
+                    <h3 class="card-title fs-2 fs-sm-4 text-center">${titleFood}</h3>
+                    <img src="${imgFood}" class="card-image img-fluid mx-auto my-3 rounded-3" alt="">
+                    <h3 class="fs-5 mt-3">PRICE
+                    <span class="float-end">$</span><span class="card-price mb-3 float-end priceFoodCart">${price}</span>
+                    </h3>
+    
+                    <div class="d-flex justify-content-between w-100">
+                        <h3 class="fs-5 mb-0">QUANTITY</h3>
+    
+                        <select class="rounded-2 text-center select-quantity">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+    
+                    <h3 class="total-title fs-5 mt-3">TOTAL
+                        <span class="float-end">$</span><span class="mb-3 float-end card-price totalPrice">${price}</span>
                     </h3>
                 </div>
             </div>
-        </div>
-    `;
-}
-
-function printShopCart()
-{
-    //Modal Info adicional de la comida desde html y aqui se incrustan los datos
-    modalCartFood.innerHTML = 
-    `
-        <div class="card card-body d-flex col-12 col-lg-4 rounded-3 mx-2 my-2" style="width: 17rem;">  
-            <div>
-                <h3 class="card-title fs-2 fs-sm-4 text-center">TITLE</h3>
-                <img src="../images/img/img-3.jpg" class="card-image img-fluid mx-auto my-3 rounded-3" alt="">
-                <h3 class="fs-5 mt-3">PRICE
-                    <span class="card-price mb-3 float-end">$10.990</span>
-                </h3>
-
-                <div class="d-flex justify-content-between w-100">
-                    <h3 class="fs-5 mb-0">QUANTITY</h3>
-
-                    <select class="rounded-2 text-center select-quantity">
-                    <option value="uno">1</option>
-                    <option value="dos">2</option>
-                    <option value="tres">3</option>
-                    <option value="cuatro">4</option>
-                    </select>
-                </div>
-
-                <h3 class="total-title fs-5 mt-3">TOTAL
-                    <span class="card-price mb-3 float-end">$10.990</span>
-                </h3>
-            </div>
-        </div>
-    `;
+        `;
+    });
 }
 
 //Clean Childs from HTML
-function cleanHtml()
+function cleanHtmlFoodCardsContainer()
 {
     while(cardsContainer.firstChild)
     {
         cardsContainer.removeChild(cardsContainer.firstChild);
+    }
+}
+
+function cleanHtmlCart()
+{
+    while(modalCartFood.firstChild)
+    {
+        modalCartFood.removeChild(modalCartFood.firstChild);
     }
 }
