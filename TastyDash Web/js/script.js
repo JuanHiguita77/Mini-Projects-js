@@ -1,25 +1,60 @@
-//Selectors
+//SELECTORS
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
+const UrlMainPage = 'http://127.0.0.1:5500/index.html';
 
+//PRODUCTS CONTAINER
 const cardsContainer = document.querySelector('.cards-container .row');
+
+//INPUT SEARCHING FOOD
 const inputFood = document.querySelector('#foodSearch');
+
+//MODAL BODY FOR ADDITIONAL FOOD INFO 
 const modalFoodInfo = document.querySelector('#modalFoodInfo .modal-body');
+
+//MODAL BODY FOR SHOPPING CART
 const modalCartFood = document.querySelector('#modalCartFood .cartProducts');
-const quantityProducts = document.querySelector('#quantityProducts');
+
+//BASKET BUTTON
 const basketContainer = document.querySelector('#basket-container');
 
-//Cart products full
-const shopCart = [];
+//COUNTER FOOD IN BASKET
+const quantityProducts = document.querySelector('#quantityProducts');
 
+//TOTAL PRICES IN CHECKOUT
+const subtotalPrice = document.querySelector('#subtotal-price');
+const totalPrice = document.querySelector('#total-price');
+
+//ANIMATION OPENER SELECTORS
+const modalInfo = document.querySelector("#modalFoodInfo");
+const modalShoptCart = document.querySelector("#modalCartFood");
+
+//CART PRODUCTS 
+let shopCart = [];
+
+//URL ARRAY
+const Urls = 
+[
+    UrlMainPage,
+    `${UrlMainPage}#home`,
+    `${UrlMainPage}#about`,
+    `${UrlMainPage}#foods`,
+    `${UrlMainPage}#reviews`,
+    `${UrlMainPage}#faq`
+];
+
+//EVENTS
+
+//DOCUMENT LOADED EVENT
 document.addEventListener('DOMContentLoaded', () =>
 {
     //Counters
-    if(window.location.href === 'http://127.0.0.1:5500/index.html')
+    if(Urls.some(url => window.location.href.includes(url)))
     {
         counter('count1', 0, 1287, 1000);
         counter('count2', 0, 3055, 2000);
         counter('count3', 0, 1355, 3000);
         counter('count4', 0, 2532, 1000);
+        return;
     }
 
     //MESSAGE EMPTY SHOP CART
@@ -27,10 +62,16 @@ document.addEventListener('DOMContentLoaded', () =>
 
     //COUNTER QUANTITY PRODUCT CART
     quantityProducts.textContent = 0;
+
+    shopCart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+
+    quantityProducts.textContent = shopCart.length;
+
     //FOOD FETCHING 
     getFoods();
 });
 
+//SEARCH INPUT EVENT
 inputFood.addEventListener('input', () =>
 {
     setTimeout(()=>
@@ -40,6 +81,7 @@ inputFood.addEventListener('input', () =>
     }, 300);
 });
 
+//ADD PRODUCT CART EVENT AND OPEN MORE INFO
 cardsContainer.addEventListener('click', (e) =>
 {
     if(e.target.classList.contains('openModalInfo'))
@@ -47,6 +89,7 @@ cardsContainer.addEventListener('click', (e) =>
         const id = e.target.getAttribute('id-food')
         
         //OPEN MODAL FOOD INFO
+        modalInformacion();
         loadShowMore(id);
     }
 
@@ -61,30 +104,64 @@ cardsContainer.addEventListener('click', (e) =>
 
         addProductCart(price,titleFood, imgFood);
     }
-})
+});
 
+//ANIMATION AND TOTAL PRICES CALCULATE FIRST TIME
+basketContainer.addEventListener('click', ()=>
+{   
+    setTimeout(()=>
+    {
+        const pricesTotals = document.querySelectorAll('.totalPrice');
+        calculateTotalPrice(pricesTotals);
+    },500);
+
+    modalCart();
+    printShopCart(shopCart);
+});
+
+//CALCULATE PRICE INDIVIDUAL PRODUCT 
 modalCartFood.addEventListener('click', (e) =>
 {
-
     if(e.target.classList.contains('select-quantity'))
     {    
         const selectInput = e.target;
 
         selectInput.addEventListener('change', ()=>
         {
+            const pricesTotals = document.querySelectorAll('.totalPrice');
+
             let totalPriceIndividual = 0;
             let price = 0;
-            let selectQuantity = 0;
-    
-            price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
-            selectQuantity = e.target.value;
+            let selectQuantityIndividual = 0;
             
-            totalPriceIndividual = price * selectQuantity;
+            price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
+            selectQuantityIndividual = e.target.value;
+            
+            totalPriceIndividual = price * selectQuantityIndividual;
     
             e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
-        })
+
+            calculateTotalPrice(pricesTotals);
+        });
     }
 });
+
+
+//FUNCTIONS
+
+//CALCULATE TOTAL PRICE FOR CHECK
+function calculateTotalPrice(pricesTotals)
+{
+    let totalPriceFull = 0;
+
+    pricesTotals.forEach( price =>
+    {
+        totalPriceFull += parseInt(price.textContent);
+        
+        subtotalPrice.textContent = `${totalPriceFull}$`;
+        totalPrice.textContent = `${totalPriceFull}$`;
+    })
+};
 
 //COUNTER SECTION
 function counter(id, start, end, duration)
@@ -105,7 +182,7 @@ function counter(id, start, end, duration)
             clearInterval(timer)
         }
     }, step);
-}
+};
 
 //Fetching food data
 async function getFoods()
@@ -123,7 +200,7 @@ async function getFoods()
     {
         console.log('Error en la peticion', error )
     }
-}
+};
 
 //Print HTML Cards
 function foodPrintHtml(foods)
@@ -160,8 +237,9 @@ function foodPrintHtml(foods)
         cardsContainer.innerHTML = `<h2 class="text-center my-5 fw-bold">¡SORRY, MEAL NOT FOUND!!</h2>`;    
     }
 
-}
+};
 
+//MORE INFO FETCH
 async function loadShowMore(id)
 {
     try
@@ -177,8 +255,9 @@ async function loadShowMore(id)
     {
         console.log('Error obteniendo los detalles del alimento: ', err)
     }
-}
+};
 
+//SHOW MORE INFO CARD CREATING
 function printShowMore(foodData)
 {
     const { strMeal, strArea, strMealThumb, strIngredient1, strIngredient2, strIngredient3 } = foodData;
@@ -209,8 +288,9 @@ function printShowMore(foodData)
             </div>
         </div>
     `;
-}
+};
 
+//FOOD OBJECT CREATING AND ADDING TO CART LOADING INDIVIDUAL CARDS INSIDE SHOPPING CART
 function addProductCart(price,titleFood, imgFood)
 {
     const meal = 
@@ -221,9 +301,12 @@ function addProductCart(price,titleFood, imgFood)
     }
 
     shopCart.push(meal);
-    printShopCart(shopCart);
-}
+    localStorage.setItem('shoppingCart', JSON.stringify(shopCart));
 
+    printShopCart(shopCart);
+};
+
+//LOADING INDIVIDUAL CARDS INSIDE SHOPPING CART
 function printShopCart(shopCart)
 {
     cleanHtmlCart();
@@ -250,6 +333,7 @@ function printShopCart(shopCart)
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
+                            <option value="0">0</option>
                         </select>
                     </div>
     
@@ -260,21 +344,42 @@ function printShopCart(shopCart)
             </div>
         `;
     });
+};
+
+//ANIMATION ADDITIONAL INFO
+function modalInformacion() 
+{
+    //Estilo que se le aplicara al modal despues de añadirle la clase para el estilo
+    modalInfo.classList.add("modal-animation-open")
+};
+
+//ANIMATION SHOPPING CART
+function modalCart() 
+{
+    // Estilo que se le aplicara al modal despues de añadirle la clase para el estilo
+    modalShoptCart.classList.add("modal-animation-open")
+};
+
+//GOOGLE TRANSLATE
+function googleTranslateElementInit() 
+{
+    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true}, 'google_translate_element');
 }
 
-//Clean Childs from HTML
+//CLEAN MORE INFO CARD
 function cleanHtmlFoodCardsContainer()
 {
     while(cardsContainer.firstChild)
     {
         cardsContainer.removeChild(cardsContainer.firstChild);
     }
-}
+};
 
+//CLEAN PRODUCTS FOR SHOPPING CART
 function cleanHtmlCart()
 {
     while(modalCartFood.firstChild)
     {
         modalCartFood.removeChild(modalCartFood.firstChild);
     }
-}
+};

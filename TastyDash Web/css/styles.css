@@ -730,7 +730,6 @@ p
 }
 /* Tamaño de los h3 en pantallas pequeñas */
 
-
 /*Boton abrir modal */
 #btnAbrirModalInfo 
 {
@@ -741,16 +740,11 @@ p
 }
 /*Boton abrir modal */
 
+#modalCartFood .cards-container a button
+{
+    background-color: var(--primary-color);
+}
 /*ORDER NOW PAGE STYLES*/
-
-
-
-
-
-
-
-
-
 
 
 
@@ -819,6 +813,16 @@ p
     top: -400px;
 }
 
+#ingredients-container-section .ingredients-content .dinamic-ingredient
+{
+    font-family: var(--primary-font);
+    color: var(--black-color);
+    font-size: 2.8rem;
+    position: relative;
+    top: -250px;
+    transform: rotate(-90deg);
+    letter-spacing: 15px;
+}
 
 #ingredients-container-section .ingredients-content .container-third-img
 {
@@ -1145,6 +1149,28 @@ p
     outline: none;
 }
 /*ORDER CONFIRMATION DATA DESING*/
+
+/*TRANSLATE BUTTON DESING*/
+#google_translate_element
+{
+    position: fixed;
+    bottom: 85px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 5px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+#google_translate_element .skiptranslate span
+{
+    display: none;
+}
+/*TRANSLATE BUTTON DESING*/
+
 
 @media screen and (min-width: 767px)
 {
@@ -1647,6 +1673,12 @@ p
     {
         font-size: 2.4rem;
         top: -780px;
+    }
+
+    #ingredients-container-section .ingredients-content .dinamic-ingredient 
+    {
+        font-size: 4.5rem;
+        top: -390px;
     }
 
     /*INGREDIENTS PAGE DESING*/

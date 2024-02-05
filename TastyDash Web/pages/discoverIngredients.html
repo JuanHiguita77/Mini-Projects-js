@@ -11,7 +11,10 @@
     <link rel="stylesheet" href="../css/styles.css">
 
     <!-- SCRIPT JS -->
-    <script src="../js/script.js" defer></script>
+    <script src="../js/word.js" defer></script>
+
+    <!-- GOOGLE TRANSLATE -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" defer></script>
 
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -109,7 +112,7 @@
         <!-- VISIBLE CONTAINER JUST IN BIG SCREENS -->
         <div class="col-lg-5 d-none d-lg-block container-second-img">
           <img class="img-fluid rounded-4" src="../images/img/img-8.jpg" alt="ingredient">
-          <p>Exquisite</p> 
+          <p class="dinamic-ingredient"></p> 
         </div>
       </div>
 
@@ -144,6 +147,9 @@
     </div>
   </section>
   <!-- CONTENT SECTION -->
+
+    <!-- Translate button -->
+    <button id="google_translate_element">Translate</button>
 
   <!-- Footer -->
   <footer id="footer">
