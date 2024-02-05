@@ -28,6 +28,9 @@ const totalPrice = document.querySelector('#total-price');
 const modalInfo = document.querySelector("#modalFoodInfo");
 const modalShoptCart = document.querySelector("#modalCartFood");
 
+//BUTTON CLEAN CART
+const cleanStorage = document.querySelector('.cleanCart');
+
 //CART PRODUCTS 
 let shopCart = [];
 
@@ -57,11 +60,11 @@ document.addEventListener('DOMContentLoaded', () =>
         return;
     }
 
-    //MESSAGE EMPTY SHOP CART
-    modalCartFood.innerHTML = `<h2 class="text-center my-5 fw-bold">¡CALM YOUR HUNGRY NOW!</h2>`;
-
     //COUNTER QUANTITY PRODUCT CART
     quantityProducts.textContent = 0;
+
+    //MESSAGE EMPTY SHOP CART
+    modalCartFood.innerHTML = `<h2 class="text-center my-5 fw-bold">¡CALM YOUR HUNGRY NOW!</h2>`;
 
     shopCart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
 
@@ -146,6 +149,12 @@ modalCartFood.addEventListener('click', (e) =>
     }
 });
 
+cleanStorage.addEventListener('click', () =>
+{
+    localStorage.clear();
+    cleanHtmlCart();
+    quantityProducts.textContent = 0;
+});
 
 //FUNCTIONS
 

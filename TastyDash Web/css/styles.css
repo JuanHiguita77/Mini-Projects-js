@@ -740,6 +740,11 @@ p
 }
 /*Boton abrir modal */
 
+#modalCartFood .cards-container .cleanCart
+{
+    background-color: var(--secondary-color);
+}
+
 #modalCartFood .cards-container a button
 {
     background-color: var(--primary-color);
