@@ -95,9 +95,23 @@ basketContainer.addEventListener('click', ()=>
         const pricesTotals = document.querySelectorAll('.totalPrice');
         calculateTotalPrice(pricesTotals);  
     }, 300);
-    
+
+
     modalCart();
     printShopCart(shopCart);
+
+    if (shopCart.length === 0)
+    {
+        console.log('desactivado')
+        document.querySelector('#checkoutButton button').style.display = 'none';
+    }
+
+    if(shopCart.length > 0)
+    {
+        console.log('ativado papi');
+        document.querySelector('#checkoutButton button').style.display = 'block';
+    }
+
 });
 
 //CALCULATE PRICE INDIVIDUAL PRODUCT 
@@ -134,6 +148,7 @@ cleanStorage.addEventListener('click', () =>
     subtotalPrice.textContent = 0;
     totalPrice.textContent = 0;
     quantityProducts.textContent = 0;
+    document.querySelector('#checkoutButton button').style.display = 'none';
 
     //ENABLE ALL ADD CART BUTTONS
     addCart.forEach(btn =>

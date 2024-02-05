@@ -579,6 +579,13 @@ p
 }
 /*BASKET ICON*/
 
+/*LINK CHECKOUT*/
+#modalCartFood .cards-container #checkoutButton
+{
+    text-decoration: none;
+}
+/*LINK CHECKOUT*/
+
 /*ARROW TOP SCROLL*/
 .scroll-top 
 {
@@ -741,12 +748,14 @@ p
 }
 /*Boton abrir modal */
 
+/*Button clear cart*/
 #modalCartFood .cards-container .cleanCart
 {
     background-color: var(--secondary-color);
 }
 
-#modalCartFood .cards-container a button
+/*CHECKOUT BUTTON*/
+#modalCartFood .cards-container #checkoutButton button
 {
     background-color: var(--primary-color);
 }
@@ -1464,8 +1473,6 @@ p
     }
     /*AWARDS INFO*/
     /*CHEFS DESING*/
-
-
 }
 
 @media (min-width: 1024px)

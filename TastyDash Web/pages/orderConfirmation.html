@@ -28,13 +28,13 @@
 <body>
     <div class="container-order-confirmation">
         <img src="../images/logo.png" alt="Logo">
-        <h2>¡Danos Tu Informacion De Envio!</h2>
+        <h2>¡Give Us Your Shipping Information!</h2>
         <form>
-            <input type="text" name="nombre" placeholder="Nombre" required>
-            <input type="number" name="telefono" maxlength="10" placeholder="Teléfono" required>
-            <input type="text" name="direccion" placeholder="Dirección" required>
-            <textarea name="mensaje" placeholder="Mensaje corto"></textarea>
-            <button type="submit" data-bs-toggle="modal" data-bs-target="#alertForm">Enviar</button>
+            <input type="text" name="nombre" placeholder="Name" class="nameInput" required>
+            <input type="number" name="telefono" maxlength="10" placeholder="Tel" class="telInput" required>
+            <input type="text" name="direccion" placeholder="Address" class="addressInput" required>
+            <textarea name="mensaje" placeholder="Additional Message"></textarea>
+            <button id="orderConfirmationButton" type="submit" data-bs-toggle="modal" data-bs-target="#alertForm">Send</button>
         </form>
     </div>
 
