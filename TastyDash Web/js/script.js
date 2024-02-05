@@ -151,9 +151,21 @@ modalCartFood.addEventListener('click', (e) =>
 
 cleanStorage.addEventListener('click', () =>
 {
+    const addCart = document.querySelectorAll('.addCart');
+
+    //RESET ALL INFORMATION
     localStorage.clear();
+    shopCart = [];
     cleanHtmlCart();
+    subtotalPrice.textContent = 0;
+    totalPrice.textContent = 0;
     quantityProducts.textContent = 0;
+
+    //ENABLE ALL ADD CART BUTTONS
+    addCart.forEach(btn =>
+    {
+        btn.disabled = false;
+    })
 });
 
 //FUNCTIONS
