@@ -656,7 +656,8 @@ p
 /*================= Estilos Modal carrito =================*/
 
 /*Animacion del modal*/
-.modal-animation-open {
+.modal-animation-open 
+{
 
     animation: fadeIn 0.4s ease-in-out;
 }
@@ -1176,6 +1177,14 @@ p
 }
 /*TRANSLATE BUTTON DESING*/
 
+/*ALERT FORM*/
+#alertForm .modal-footer button
+{
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-family: var(--secondary-font);
+    font-weight: 600;
+}
 
 @media screen and (min-width: 767px)
 {

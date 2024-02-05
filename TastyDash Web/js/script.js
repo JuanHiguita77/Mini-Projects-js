@@ -1,6 +1,5 @@
 //SELECTORS
 const URL = 'https://www.themealdb.com/api/json/v1/1/';
-const UrlMainPage = 'http://127.0.0.1:5500/index.html';
 
 //PRODUCTS CONTAINER
 const cardsContainer = document.querySelector('.cards-container .row');
@@ -34,32 +33,11 @@ const cleanStorage = document.querySelector('.cleanCart');
 //CART PRODUCTS 
 let shopCart = [];
 
-//URL ARRAY
-const Urls = 
-[
-    UrlMainPage,
-    `${UrlMainPage}#home`,
-    `${UrlMainPage}#about`,
-    `${UrlMainPage}#foods`,
-    `${UrlMainPage}#reviews`,
-    `${UrlMainPage}#faq`
-];
-
 //EVENTS
 
 //DOCUMENT LOADED EVENT
 document.addEventListener('DOMContentLoaded', () =>
 {
-    //Counters
-    if(Urls.some(url => window.location.href.includes(url)))
-    {
-        counter('count1', 0, 1287, 1000);
-        counter('count2', 0, 3055, 2000);
-        counter('count3', 0, 1355, 3000);
-        counter('count4', 0, 2532, 1000);
-        return;
-    }
-
     //COUNTER QUANTITY PRODUCT CART
     quantityProducts.textContent = 0;
 
@@ -115,40 +93,36 @@ basketContainer.addEventListener('click', ()=>
     setTimeout(()=>
     {
         const pricesTotals = document.querySelectorAll('.totalPrice');
-        calculateTotalPrice(pricesTotals);
-    },500);
-
+        calculateTotalPrice(pricesTotals);  
+    }, 300);
+    
     modalCart();
     printShopCart(shopCart);
 });
 
 //CALCULATE PRICE INDIVIDUAL PRODUCT 
-modalCartFood.addEventListener('click', (e) =>
-{
-    if(e.target.classList.contains('select-quantity'))
-    {    
-        const selectInput = e.target;
+modalCartFood.addEventListener('change', (e) =>
+{ 
+    if (e.target.classList.contains('select-quantity')) {
+        const pricesTotals = document.querySelectorAll('.totalPrice');
 
-        selectInput.addEventListener('change', ()=>
-        {
-            const pricesTotals = document.querySelectorAll('.totalPrice');
-
-            let totalPriceIndividual = 0;
-            let price = 0;
-            let selectQuantityIndividual = 0;
+        let totalPriceIndividual = 0;
+        let price = 0;
+        let selectQuantityIndividual = 0;
             
-            price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
-            selectQuantityIndividual = e.target.value;
+        price = parseInt(e.target.parentElement.parentElement.querySelector('.priceFoodCart').textContent);
+        selectQuantityIndividual = e.target.value;
             
-            totalPriceIndividual = price * selectQuantityIndividual;
+        totalPriceIndividual = price * selectQuantityIndividual;
     
-            e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
+        e.target.parentElement.parentElement.querySelector('.totalPrice').textContent = totalPriceIndividual;
 
-            calculateTotalPrice(pricesTotals);
-        });
-    }
+        calculateTotalPrice(pricesTotals);
+    };
 });
 
+
+//CLEAN ALL CART FOOD
 cleanStorage.addEventListener('click', () =>
 {
     const addCart = document.querySelectorAll('.addCart');
@@ -184,26 +158,6 @@ function calculateTotalPrice(pricesTotals)
     })
 };
 
-//COUNTER SECTION
-function counter(id, start, end, duration)
-{
-    let element = document.getElementById(id),
-    current = start,
-    range = end - start,
-    increment = end > start ? 1 : -1,
-    step = Math.abs(Math.floor(duration / range)),
-    timer = setInterval(() =>
-    {
-        current += increment;
-        element.textContent = current;
-
-        if(current === end)
-        {
-            //Paramos el intervalo
-            clearInterval(timer)
-        }
-    }, step);
-};
 
 //Fetching food data
 async function getFoods()
@@ -382,10 +336,10 @@ function modalCart()
 };
 
 //GOOGLE TRANSLATE
-function googleTranslateElementInit() 
+/*function googleTranslateElementInit() 
 {
     new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true}, 'google_translate_element');
-}
+}*/
 
 //CLEAN MORE INFO CARD
 function cleanHtmlFoodCardsContainer()
