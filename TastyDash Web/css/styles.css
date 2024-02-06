@@ -1672,14 +1672,14 @@ p
     #ingredients-container-section .ingredients-content .container-first-img p 
     {   
         font-size: 2rem;
-        top: -575px;
+        top: -540px;
         line-height: 40px;
     }
 
     #ingredients-container-section .ingredients-content .container-four-img p 
     {
         font-size: 2.5rem;
-        top: -325px;
+        top: -290px;
     }
 
     #ingredients-container-section .ingredients-content .container-third-img p 
@@ -1693,13 +1693,13 @@ p
     #ingredients-container-section .ingredients-content .container-five-img p 
     {
         font-size: 2.4rem;
-        top: -780px;
+        top: -660px;
     }
 
     #ingredients-container-section .ingredients-content .dinamic-ingredient 
     {
         font-size: 4.5rem;
-        top: -390px;
+        top: -170px;
     }
 
     /*INGREDIENTS PAGE DESING*/
