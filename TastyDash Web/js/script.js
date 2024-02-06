@@ -1,4 +1,6 @@
 //SELECTORS
+import {cleanHtmlFoodCardsContainer, cleanHtmlCart} from './cleanHtml.js';
+
 const UrlFood = 'https://www.themealdb.com/api/json/v1/1/';
 
 //PRODUCTS CONTAINER
@@ -179,7 +181,6 @@ function calculateTotalPrice(pricesTotals)
     }
 };
 
-
 //Fetching food data
 async function getFoods()
 {
@@ -356,26 +357,4 @@ function modalCart()
     modalShoptCart.classList.add("modal-animation-open")
 };
 
-//GOOGLE TRANSLATE
-/*function googleTranslateElementInit() 
-{
-    new google.translate.TranslateElement({pageLanguage: 'en', includedLanguages: 'es,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE, gaTrack: true}, 'google_translate_element');
-}*/
 
-//CLEAN MORE INFO CARD
-function cleanHtmlFoodCardsContainer()
-{
-    while(cardsContainer.firstChild)
-    {
-        cardsContainer.removeChild(cardsContainer.firstChild);
-    }
-};
-
-//CLEAN PRODUCTS FOR SHOPPING CART
-function cleanHtmlCart()
-{
-    while(modalCartFood.firstChild)
-    {
-        modalCartFood.removeChild(modalCartFood.firstChild);
-    }
-};
