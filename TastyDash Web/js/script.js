@@ -1,5 +1,5 @@
 //SELECTORS
-const URL = 'https://www.themealdb.com/api/json/v1/1/';
+const UrlFood = 'https://www.themealdb.com/api/json/v1/1/';
 
 //PRODUCTS CONTAINER
 const cardsContainer = document.querySelector('.cards-container .row');
@@ -102,16 +102,13 @@ basketContainer.addEventListener('click', ()=>
 
     if (shopCart.length === 0)
     {
-        console.log('desactivado')
         document.querySelector('#checkoutButton button').style.display = 'none';
     }
 
     if(shopCart.length > 0)
     {
-        console.log('ativado papi');
         document.querySelector('#checkoutButton button').style.display = 'block';
     }
-
 });
 
 //CALCULATE PRICE INDIVIDUAL PRODUCT 
@@ -171,6 +168,15 @@ function calculateTotalPrice(pricesTotals)
         subtotalPrice.textContent = `${totalPriceFull}$`;
         totalPrice.textContent = `${totalPriceFull}$`;
     })
+
+    if(totalPriceFull === 0)
+    {
+        document.querySelector('#checkoutButton button').style.display = 'none';
+    }
+    else
+    {
+        document.querySelector('#checkoutButton button').style.display = 'block';
+    }
 };
 
 
@@ -180,7 +186,7 @@ async function getFoods()
     //Food search param
     try
     {
-        const response = await fetch(`${URL}filter.php?i=${inputFood.value.toLowerCase()}`);
+        const response = await fetch(`${UrlFood}filter.php?i=${inputFood.value.toLowerCase()}`);
         const data = await response.json();
         
         //Print HTML Cards
@@ -234,9 +240,9 @@ async function loadShowMore(id)
 {
     try
     {
-        const URL = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+        const UrlId = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
 
-        const response = await fetch(URL);
+        const response = await fetch(UrlId);
         const data = await response.json();
 
         printShowMore(data.meals[0]);
