@@ -1,0 +1,27 @@
+{
+  "news": [
+    {
+      "title": "Buckminster Burgess",
+      "image": "Accusantium lorem ve",
+      "content": "Voluptatem aut reru",
+      "publicationDate": "2024-02-10",
+      "categoryId": "1",
+      "id": "1"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Channing Norton",
+      "description": "Aut deleniti exceptu",
+      "id": "1"
+    }
+  ],
+  "users": [
+    {
+      "id": "d371",
+      "name": "Juanfer",
+      "email": "test@riwi.io",
+      "password": "riwi2024"
+    }
+  ]
+}
