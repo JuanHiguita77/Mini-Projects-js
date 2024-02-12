@@ -1,12 +1,22 @@
 {
   "news": [
     {
-      "title": "Buckminster Burgess",
-      "image": "Accusantium lorem ve",
-      "content": "Voluptatem aut reru",
-      "publicationDate": "2024-02-10",
+      "title": "Iliana Foreman",
+      "image": "Nemo praesentium nis",
+      "content": "Quae blanditiis ut u",
+      "publicationDate": "2024-02-11",
       "categoryId": "1",
-      "id": "1"
+      "userId": "d371",
+      "id": "86ad"
+    },
+    {
+      "id": "d8f0",
+      "title": "Yoshi Cotton",
+      "image": "Excepteur labore eaq",
+      "content": "Eum et veniam dolor",
+      "publicationDate": "2024-02-11",
+      "userId": "d371",
+      "categoryId": "a926"
     }
   ],
   "categories": [
@@ -14,6 +24,11 @@
       "name": "Channing Norton",
       "description": "Aut deleniti exceptu",
       "id": "1"
+    },
+    {
+      "id": "a926",
+      "name": "Indigo Douglas",
+      "description": "Enim ullamco dolor e"
     }
   ],
   "users": [

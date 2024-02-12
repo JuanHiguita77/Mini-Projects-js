@@ -32,7 +32,6 @@ formNews.addEventListener('submit', (e)=>
     {
         createNewNotice();
     }
-    
 });
 
 async function createNewNotice()
@@ -87,6 +86,8 @@ export async function deleteNotice(idNotice)
 
 export async function updateNotice(idNotice)
 {
+    const user = JSON.parse(localStorage.getItem('user'));
+
     const newNotice =
     {
         title: nameNotice.value,
@@ -94,6 +95,7 @@ export async function updateNotice(idNotice)
         content: contentNotice.value,
         publicationDate: new Date().toISOString().split('T')[0],
         categoryId: idCategory.value,
+        userId: user.id,
     }
 
     await put(URLNews, idNotice, newNotice);
