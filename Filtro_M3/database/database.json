@@ -7,32 +7,28 @@
       "nameCompany": "Gilmore Galloway Inc",
       "imageCompany": "Hudson Sosa Trading",
       "nit": 37673079
+    },
+    {
+      "id": "b6fa",
+      "email": "rowagagodi@mailinator.com",
+      "password": "Pa$$w0rd!",
+      "nameCompany": "Mejia Barry Co",
+      "imageCompany": "Harrell Cotton LLC",
+      "nit": 16283388
     }
   ],
   "jobs": [
     {
-      "id": "4904",
       "image": "assets/img/logo.webp",
-      "titleJob": "Sed qui duis volupta",
-      "description": "Facere impedit expe",
-      "location": "Itaque deserunt hic ",
-      "experience": "82",
+      "titleJob": "[object Object]",
+      "experience": "65",
+      "salary": "1000000",
+      "location": "Dolor amet dolore d",
       "modality": "Remote",
-      "salary": "12",
-      "datePublication": "2024-02-12",
-      "companyId": "57c1"
-    },
-    {
-      "id": "4d71",
-      "image": "assets/img/logo.webp",
-      "titleJob": "Est non ut distincti",
-      "description": "Labore labore volupt",
-      "location": "Eos commodi consequa",
-      "experience": "2",
-      "modality": "In person",
-      "salary": "48",
-      "datePublication": "2024-02-12",
-      "companyId": "57c1"
+      "description": "Praesentium ea ex fu",
+      "datePublication": "2024-02-15",
+      "companyId": "b6fa",
+      "id": "9102"
     }
   ]
 }

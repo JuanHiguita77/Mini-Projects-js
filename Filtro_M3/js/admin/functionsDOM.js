@@ -69,7 +69,7 @@ function loadInfoJobs(job)
 
   idJobUpdated.value = job.id;
 
-  titleJob.value = job.company;
+  titleJob.value = job.titleJob;
   experience.value = job.experience;
   salary.value = job.salary;
   location.value = job.location;

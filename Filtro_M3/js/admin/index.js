@@ -4,7 +4,6 @@ import { deleteHttp, get, post, put } from '../API/clientHttp.js';
 import { printJobs } from './functionsDOM.js';
 
 //Selectors
-
 const jobsForm = document.querySelector('#jobsForm');
 
 export const idJobUpdated = document.querySelector("#idJobUpdated");

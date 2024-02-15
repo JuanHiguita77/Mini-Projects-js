@@ -31,7 +31,7 @@ async function printJobs()
 
   data.forEach(job =>
   {
-    const { image, titleJob, description, location, experience, modality, salary, datePublication } = job;
+    const { image, titleJob, description, location, experience, modality, datePublication } = job;
 
     jobsCardsContainer.innerHTML +=
       `
@@ -74,10 +74,11 @@ async function printJobs()
 async function searchJobs()
 {
   cleanHtml(jobsCardsContainer);
+  
   const data = await get(`${URLJobs}?titleJob=${searchInput.value}&modality=${modalityFilter.value}`)
 
   data.forEach(job => {
-    const { image, titleJob, description, location, experience, modality, salary, datePublication } = job;
+    const { image, titleJob, description, location, experience, modality, datePublication } = job;
 
     jobsCardsContainer.innerHTML +=
       `
